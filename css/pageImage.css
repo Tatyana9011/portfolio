@@ -1,0 +1,224 @@
+:root{
+  --color1: #c3c1c1;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    color: var(--color1);
+    margin-bottom: 20px;
+}
+.title p{
+    margin-top: 15px;
+}
+input{
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#imageURL,#imageURL2{
+  position: relative;
+  border-radius:5px;
+  cursor:auto;
+  box-shadow:  9px 9px 18px rgba(238, 239, 237, 0.5),-9px -9px 18px #505562;
+}
+
+input#finput, input#finput2{
+    display: none;
+}
+.wrapAddImage{
+  display: flex;
+  transition: 0.5s;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center
+}
+
+.filter input label{
+    cursor: pointer;
+    display: flex;
+}
+
+.addImg{
+  cursor: pointer;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: #505562;
+  cursor:pointer;
+  box-shadow:  9px 9px 18px rgba(147, 209, 117, 0.50),-9px -9px 18px #505562;
+  color: #0ad406;
+ 
+}
+.addImg:hover{
+  background-color: rgba(147, 209, 117, 0.50);
+  transition:0.5s;
+}
+
+#rainbow{
+    border-radius: 5px;
+    width: 150px;
+    text-align: left;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #505562;
+    cursor:pointer;
+    box-shadow:  9px 9px 18px #5773c7,-9px -9px 18px #6b707b;
+    color: rgb(82, 125, 243);
+}
+#rainbow:focus, .filter select:focus{
+  outline:transparent;   
+}
+ 
+#rainbow:hover{
+  background-color: rgba(82, 125, 243, 0.50);
+  transition:0.5s;
+}
+
+#clear,#clear2{
+  border-radius: 5px;
+  width: 150px;
+  text-align: left;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding: 10px;
+  background-color: #505562;
+  cursor:pointer;
+  box-shadow:  9px 9px 18px rgb(221, 108, 104), -9px -9px 18px #505562;
+  color: rgb(255, 10, 1);
+}
+
+#clear:hover,
+#clear2:hover
+{
+  background-color: rgba(255, 10, 1, 0.33);
+  transition:0.5s;
+}
+
+.filter label select{
+    cursor: pointer !important;
+    padding: 10px;
+    margin-left: 10px;
+    margin-left: 10px;
+}
+.filter select{
+  border-radius: 5px;
+  width: 150px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  background-color: #505562;
+  cursor:pointer;
+  box-shadow:  9px 9px 18px rgb(247, 149, 72), -9px -9px 18px #505562;
+  color: rgb(247, 149, 72);
+}
+.filter select option{
+    background:#fff;
+}
+
+.filter select:hover{
+  background-color: rgba(247, 149, 73, 0.50);
+  transition:0.5s;
+}
+
+  
+.canvas_content{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+  canvas{
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .photoStock{
+    text-decoration:none;
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--color1);
+    transition: all .3s ease-in-out;
+    padding-left:2em;
+
+  }
+  .photoStock:hover{
+    color:#f0f6bd;
+    text-shadow:0 0 5px #f0f6bd;
+  }
+  .color_wrap{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+  }
+ .color{
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
+  position: absolute;
+  margin: 0;
+  margin-right: 5px;
+  z-index: 1000;
+  opacity: 0;
+ }
+
+input[type="range"]{
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.color_wrap span{
+ display: block;
+ position: absolute;
+ width: 50px;
+ height: 50px;
+ border-radius:50%;
+ margin-right: 10px;
+}
+
+.gradient{
+  background: linear-gradient(90deg, #d3500c,#b862a6,#648aaa);
+--webkit-linear-gradient:(90deg, #d3500c,#b862a6,#648aaa);      
+}
+.one{
+  background:none;
+  background-color: #d3500c;
+}
+.two{
+  background:none;
+  background-color: #b862a6;
+}
+.three{
+  background:none;
+  background-color: #648aaa;
+}
+
+
+
+.opacity_wrap{
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+
+
