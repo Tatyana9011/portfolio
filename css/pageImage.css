@@ -1,5 +1,8 @@
 :root{
   --color1: #c3c1c1;
+  --lg1: #d3500c;
+  --lg2: #b862a6;
+  --lg3: #648aaa;
 }
 .title {
     display: flex;
@@ -196,23 +199,21 @@ input[type="range"]{
 }
 
 .gradient{
-  background: linear-gradient(90deg, #d3500c,#b862a6,#648aaa);
---webkit-linear-gradient:(90deg, #d3500c,#b862a6,#648aaa);      
+  background: linear-gradient(90deg, var(--lg1),var(--lg2),var(--lg3));
+--webkit-linear-gradient:(90deg, var(--lg1),var(--lg2),var(--lg3));      
 }
 .one{
   background:none;
-  background-color: #d3500c;
+  background-color: var(--lg1);
 }
 .two{
   background:none;
-  background-color: #b862a6;
+  background-color: var(--lg2);
 }
 .three{
   background:none;
-  background-color: #648aaa;
+  background-color: var(--lg3);
 }
-
-
 
 .opacity_wrap{
   display: flex;

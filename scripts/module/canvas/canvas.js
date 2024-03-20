@@ -81,29 +81,31 @@ let image=null;
          clearCanvas()
       }
       if(target.closest('.color') ){  //если нажади на кнопку радуга
+        
         let inputColor = document.querySelectorAll('.color');
-        console.log('inputColor: ', inputColor);
-        inputColor.forEach(item=>{
+
+        inputColor.forEach((item,i)=>{
+
           item.addEventListener('input',(e) =>{
             let colorValue = e.target.value;
-            console.log('colorValue: ', colorValue);
 
-            const spanPreview = document.querySelectorAll('.color__preview');
-            console.log('spanPreview: ', spanPreview);
-            //.style.backgroundColor = colorValue;
-            console.log('spanPreview[i]: ', spanPreview[i]);
+            if(i===0){
+              document.documentElement.style.setProperty('--lg1', `${colorValue}`);
+            }
+            if(i===1){
+              document.documentElement.style.setProperty('--lg2', `${colorValue}`);
+            }
+            if(i===2){
+              document.documentElement.style.setProperty('--lg3', `${colorValue}`);
+            }
+
+            //spanPreview[3].style.background = `linear-gradient(90deg, ${spanPreview[0].style.backgroundColor},${spanPreview[1].style.backgroundColor},${spanPreview[2].style.backgroundColor})`;;
           })
         })
-       
-       
-       
-          //`linear-gradient(to right bottom, ${this.querySelector('input:first-child').value},${this.querySelector('input:last-child').value})`;
-       
       }
     }
-//картинка с радужним фильтром
-//ф-ія создает новую картинку уде измененную
-function addFilter(color) {
+
+    function addFilter(color) {
   let image = new SimpleImage(imgcanvas);
 
   if(!image.complete()){
