@@ -98,7 +98,6 @@ let image=null;
             if(i===2){
               document.documentElement.style.setProperty('--lg3', `${colorValue}`);
             }
-
             //spanPreview[3].style.background = `linear-gradient(90deg, ${spanPreview[0].style.backgroundColor},${spanPreview[1].style.backgroundColor},${spanPreview[2].style.backgroundColor})`;;
           })
         })
