@@ -217,7 +217,8 @@
 			</div>
 			<div class="massager"></div>
 			<nav class="navBar">
-				<img src='' alt="Photo" id="preview" style='display:none' crossorigin="anonymous">
+		
+				<img  src='' crossorigin="anonymous" alt="Photo" id="preview" style='display:none' >
 					<div class="wrapAddImage">
 						<label for="finput" class="addImg">
 							<input type="file" accept="image/*" id="finput">
@@ -241,15 +242,20 @@
 						</select>
 				</div>	
 				<input type = "button" value="All clear" id="clear" >	
-				
-			</nav>
+				</nav>
 			<div class="canvas_content">
+				<div class="album"></div>
+				<biv class="book"></biv>
 				<div class="canvas_width">
 					
 					<canvas width="300" height="200" id="canvasPreview" ></canvas>
+
 				</div>
-				<div>
+				<div class='arrow'><ion-icon name="arrow-redo-outline"></ion-icon></div>
+				
+				<div class="canvas_width">
 					<canvas width="300" height="200" id="getCanvas" ></canvas>
+					<img class="icon_getCanvas" src="./image/free_icon_pencil_4277132.png" alt="image/pancil"></img>
 				</div>
 					
 			</div>
@@ -257,20 +263,8 @@
 				<p  class="title">Для більших можливостей з картинками </p>
 				<nav class="navBar">
 						<div class="color_wrap">
-							<input class = "color" type="color" id="color1" name="color" value="#d3500c" />
-							<span class="color__preview one" ></span>
-						</div>
-						<div class="color_wrap">
-							<input class = "color" type="color" id="color2" name="color"  value="#b862a6"/>
-							<span class="color__preview two" ></span>
-						</div>
-						<div class="color_wrap">
-							<input class = "color" type="color" id="color3" name="color" value="#648aaa" />
-							<span class="color__preview three" ></span>
-						</div>
-						<div class="color_wrap">
-							<input class = "color" type="color" id="color" name="color"  />
-							<span class="color__preview gradient" ></span>
+							<label class="color_title" for="color">Select color:</label>
+							<input class = "color" type="color" name="color" value="#ffffff" />
 						</div>
 						<div class = 'opacity_wrap'>
 							<label for="opacity_line" >Прозорість</label>
@@ -287,19 +281,6 @@
 								<option value="3">_____</option>
 							</select>
 						</div>	
-					<div class="png_add">
-							<select name="png" id="pngAdd" style="width: 65px;">
-								<option value="">Add png</option>
-								<option value=""></option>
-								<option value=""></option>
-								<option value=""><div class="icon"><ion-icon name="home-outline"></ion-icon></div></option>
-								<option value="">yellow</option>
-								<option value="">green</option>
-								<option value="">blue</option>
-								<option value="">indigo</option>
-								<option value="">violet</option>
-							</select>
-				    </div>	
 					<input type = "button" value="Clear" id="clear2" >	
 				</nav>
 			</div>

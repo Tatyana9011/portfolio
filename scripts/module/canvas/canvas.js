@@ -1,9 +1,11 @@
 'use strict';
-import {userWidth}from '../stat.js';
+import userWidth from '../userWidth.js';
 import keydownET from './keydownET.js';
 import blurF from './blurF.js';
 import addFilterColor from './addFilterColor.js';
 import rainbow from './rainbow.js';
+import drowLine from './drowLine.js';
+
 
 const canvas = ()=>{
     console.log('canvas: ');
@@ -13,16 +15,71 @@ page= document.querySelector(".image"),
 imgcanvas = document.getElementById("canvasPreview"),
 getCanvas = document.getElementById("getCanvas"),
 selector = document.getElementById("lang"),
-imageURL = document.querySelector('#imageURL');
+imageURL = document.querySelector('#imageURL'),
+colorInput=document.querySelector('.color');
 
-let user = userWidth()
-console.log('user: ', user);
+let image=null,
+    param='album',
+    user = userWidth(param),
+    colorValue = colorInput.value;
 
-imgcanvas.style.width =` ${user[0]}px`;
-imgcanvas.style.height =` ${user[1]}px`;
-getCanvas.style.width =` ${user[0]}px`;
-getCanvas.style.height =` ${user[1]}px`;
-let image=null;
+colorInput.addEventListener('change',()=>{
+  colorValue = colorInput.value;
+  drowLine('3',user);
+})
+    
+const setCanvasWidthAndHeight=(w,h)=>{
+  imgcanvas.style.width =` ${w}px`;
+  imgcanvas.style.height =` ${h}px`;
+  getCanvas.style.width =` ${w}px`;
+  getCanvas.style.height =` ${h}px`;
+}
+
+setCanvasWidthAndHeight(user[0], user[1])
+
+window.addEventListener('resize', (e) => {
+  user = userWidth(param);
+  setCanvasWidthAndHeight(user[0], user[1])
+  drowLine('3',user);
+})
+
+
+drowLine('3',user);
+
+page.addEventListener('click', (event) =>{
+   
+  const target = event.target;
+
+
+  if(target.matches('.album')){
+    param = 'album'
+    user = userWidth(param)
+    setCanvasWidthAndHeight(user[0], user[1])
+  }
+  if(target.matches('.book')){
+    param = 'book';
+    user = userWidth(param)
+    setCanvasWidthAndHeight(user[0], user[1])
+  }
+  if(target.closest('.arrow')&&image!==null){
+    image = new SimpleImage(imgcanvas);
+    image.drawTo(getCanvas); 
+  }
+  if(target.matches('#clear2')){
+    if(image!==null){
+      getCanvas.setAttribute('width', `${user[0]}`);
+      getCanvas.width = imgcanvas.width;
+      image = new SimpleImage(imgcanvas);
+      image.drawTo(getCanvas); 
+      drowLine('3',user);
+    }else{
+      clearCanvas()
+    }
+  }
+  
+  startFilter(target);
+})
+
 
   imageURL.addEventListener('change',(e)=>{
     e.preventDefault();
@@ -51,19 +108,11 @@ let image=null;
     image.drawTo(imgcanvas); 
   });
 
-  page.addEventListener('click', (event) =>{
-
-    startFilter(event.target);
-  
-  })
-
-
   function startFilter(target){
     console.log('target: ', target);
    // ||image==null&&target.closest('.moreContent')
     if(image==null&&target.matches('#rainbow')
-    ||image==null&&target.matches('#lang')
-    ||image==null&&target.matches('#clear')){
+    ||image==null&&target.matches('#lang')){
         alert("Необхідно завантажити картинку");
         return;
      }
@@ -80,27 +129,8 @@ let image=null;
          target.blur()
          clearCanvas()
       }
-      if(target.closest('.color') ){  //если нажади на кнопку радуга
-        
-        let inputColor = document.querySelectorAll('.color');
-
-        inputColor.forEach((item,i)=>{
-
-          item.addEventListener('input',(e) =>{
-            let colorValue = e.target.value;
-
-            if(i===0){
-              document.documentElement.style.setProperty('--lg1', `${colorValue}`);
-            }
-            if(i===1){
-              document.documentElement.style.setProperty('--lg2', `${colorValue}`);
-            }
-            if(i===2){
-              document.documentElement.style.setProperty('--lg3', `${colorValue}`);
-            }
-            //spanPreview[3].style.background = `linear-gradient(90deg, ${spanPreview[0].style.backgroundColor},${spanPreview[1].style.backgroundColor},${spanPreview[2].style.backgroundColor})`;;
-          })
-        })
+      if(target.matches('.color') ){  //если нажади на кнопку радуга
+        drowLine('3',user);;
       }
     }
 
@@ -119,6 +149,7 @@ let image=null;
 //ф-ия фільтрует какой вибрали цвет и сетает его в картинку  
 //очищаем картинки
 function clearCanvas(){
+  console.log('clearCanvas: ');
   getCanvas.setAttribute('width', `${user[0]}`);
   getCanvas.width = getCanvas.width;
   imgcanvas.setAttribute('width', `${user[0]}`);
@@ -127,10 +158,12 @@ function clearCanvas(){
   fileinput.value='';
   selector.value = '';
   imageURL.value = '';
+  getCanvas.width='300';
+  drowLine('3',user);
  } 
 
 
-/*
+ /*
 //Змінюємо зелений фон на іншу картинку
 var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("hippieflower.jpg");

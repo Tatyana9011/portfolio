@@ -1,8 +1,6 @@
 :root{
   --color1: #c3c1c1;
-  --lg1: #d3500c;
-  --lg2: #b862a6;
-  --lg3: #648aaa;
+  --lg1: #070707;
 }
 .title {
     display: flex;
@@ -27,7 +25,20 @@ input{
   cursor:auto;
   box-shadow:  9px 9px 18px rgba(238, 239, 237, 0.5),-9px -9px 18px #505562;
 }
-
+.album{
+  width: 30px;
+  height: 20px;
+  border-radius:5px;
+  background: var(--color1);
+  margin-right: 10px;
+}
+.book{
+  width: 20px;
+  height: 30px;
+  border-radius:5px;
+  background: var(--color1);
+  margin-right: 30px;
+}
 input#finput, input#finput2{
     display: none;
 }
@@ -145,9 +156,45 @@ input#finput, input#finput2{
     align-items:center;
     justify-content: center;
 }
+.canvas_width{
+  position: relative;
+}
   canvas{
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px 20px;
+    border-radius:5px;
+    background: var(--color1);
+    box-shadow: 9px 9px 10px #505562;
+  }
+  #getCanvas{
+    cursor: url("../image/free_icon_pencil_4277132.png"), pointer;
+    border: 2px solid #ffffff;
+  }
+  .icon_getCanvas{
+    position: absolute;
+    top:40%;
+    right: 50%;
+    width: 40px;
+    height: 50px;
+    filter: opacity(0.5) drop-shadow(0 0 0 rgb(245, 245, 246));
+    z-index: 2000;
+ }
+
+
+.arrow{
+  display: flex;
+  cursor: pointer;
+  color: var(--color1);
+  align-items:center;
+  justify-content:center;
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    border: 1px solid #ffffff;
+    transition: all 0.5s ease-in-out;
+  }
+  .arrow:hover{
+    border: 3px solid var(--color1);
+    box-shadow:0 0 5px var(--color1);
   }
 
   .photoStock{
@@ -165,20 +212,23 @@ input#finput, input#finput2{
   }
   .color_wrap{
     position: relative;
-    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: auto;
     height: 50px;
     margin-right: 20px;
+  }
+  .color_wrap label{
+    margin-right: 10px;
   }
  .color{
   padding: 0;
   width: 50px;
   height: 50px;
-  border-radius:50%;
-  position: absolute;
   margin: 0;
   margin-right: 5px;
   z-index: 1000;
-  opacity: 0;
  }
 
 input[type="range"]{
@@ -189,30 +239,10 @@ input[type="range"]{
   justify-content: center;
 }
 
-.color_wrap span{
- display: block;
- position: absolute;
- width: 50px;
- height: 50px;
- border-radius:50%;
- margin-right: 10px;
-}
 
-.gradient{
-  background: linear-gradient(90deg, var(--lg1),var(--lg2),var(--lg3));
---webkit-linear-gradient:(90deg, var(--lg1),var(--lg2),var(--lg3));      
-}
-.one{
+.color__preview{
   background:none;
   background-color: var(--lg1);
-}
-.two{
-  background:none;
-  background-color: var(--lg2);
-}
-.three{
-  background:none;
-  background-color: var(--lg3);
 }
 
 .opacity_wrap{
