@@ -1,6 +1,7 @@
 import animated from "./animated.js";
 import openModal from "../modal/openModal.js";
 import gameCars from "./gameCars/gameCars.js";
+import boardColor from "./boardColor/boardColor.js";
 
 const gamePage = ()=>{
     console.log('gamePage: ');
@@ -13,6 +14,10 @@ const gamePage = ()=>{
         if(target.closest('#car')){
             openModal()
             gameCars(true)
+        }
+        if(target.closest('#boardColor')){
+            openModal()
+            boardColor()
         }
     })
 

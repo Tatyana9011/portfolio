@@ -15,17 +15,24 @@ page= document.querySelector(".image"),
 imgcanvas = document.getElementById("canvasPreview"),
 getCanvas = document.getElementById("getCanvas"),
 selector = document.getElementById("lang"),
+selectorLine = document.getElementById("line"),
 imageURL = document.querySelector('#imageURL'),
-colorInput=document.querySelector('.color');
+colorInput=document.querySelector('.color'),
+iconGetCanvas = document.querySelector('.icon_getCanvas'),
+paramBook = document.querySelector('.book'),
+paramAlbum = document.querySelector('.album');
+
 
 let image=null,
     param='album',
     user = userWidth(param),
     colorValue = colorInput.value;
 
+//
 colorInput.addEventListener('change',()=>{
   colorValue = colorInput.value;
-  drowLine('3',user);
+  drowLine('3');
+  
 })
     
 const setCanvasWidthAndHeight=(w,h)=>{
@@ -40,11 +47,10 @@ setCanvasWidthAndHeight(user[0], user[1])
 window.addEventListener('resize', (e) => {
   user = userWidth(param);
   setCanvasWidthAndHeight(user[0], user[1])
-  drowLine('3',user);
+  drowLine('3');
 })
 
-
-drowLine('3',user);
+drowLine('3');
 
 page.addEventListener('click', (event) =>{
    
@@ -52,18 +58,26 @@ page.addEventListener('click', (event) =>{
 
 
   if(target.matches('.album')){
+    target.classList.add('active');
+    paramBook.classList.remove('active');
     param = 'album'
     user = userWidth(param)
     setCanvasWidthAndHeight(user[0], user[1])
+    drowLine('3');
   }
   if(target.matches('.book')){
+    target.classList.add('active');
+    paramAlbum.classList.remove('active');
     param = 'book';
     user = userWidth(param)
     setCanvasWidthAndHeight(user[0], user[1])
+    drowLine('3');
   }
   if(target.closest('.arrow')&&image!==null){
     image = new SimpleImage(imgcanvas);
+    iconGetCanvas.style.display = 'none';
     image.drawTo(getCanvas); 
+    drowLine('3');
   }
   if(target.matches('#clear2')){
     if(image!==null){
@@ -71,7 +85,8 @@ page.addEventListener('click', (event) =>{
       getCanvas.width = imgcanvas.width;
       image = new SimpleImage(imgcanvas);
       image.drawTo(getCanvas); 
-      drowLine('3',user);
+      drowLine('3');
+   
     }else{
       clearCanvas()
     }
@@ -80,6 +95,11 @@ page.addEventListener('click', (event) =>{
   startFilter(target);
 })
 
+selectorLine.addEventListener('change',(event)=>{
+ const target = event.target,
+ value = target.value;
+ drowLine(value);
+})
 
   imageURL.addEventListener('change',(e)=>{
     e.preventDefault();
@@ -129,8 +149,8 @@ page.addEventListener('click', (event) =>{
          target.blur()
          clearCanvas()
       }
-      if(target.matches('.color') ){  //если нажади на кнопку радуга
-        drowLine('3',user);;
+      if(target.matches('.color') ){ 
+        drowLine('3');
       }
     }
 
@@ -144,6 +164,7 @@ page.addEventListener('click', (event) =>{
         addFilterColor(color,pixel)
       }
     }
+    iconGetCanvas.style.display = 'none';
     image.drawTo(getCanvas);
 }
 //ф-ия фільтрует какой вибрали цвет и сетает его в картинку  
@@ -159,7 +180,8 @@ function clearCanvas(){
   selector.value = '';
   imageURL.value = '';
   getCanvas.width='300';
-  drowLine('3',user);
+  iconGetCanvas.style.display = 'block';
+  drowLine('3');
  } 
 
 

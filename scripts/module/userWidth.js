@@ -1,9 +1,8 @@
 const userWidth =(param='album')=>{
-    console.log('param: ', param);
+    console.log('userWidth param: ', param);
     const hight = document.documentElement.clientHeight;
     const width = document.documentElement.clientWidth;
     if(param==='album'){
-        console.log('album: ');
         let w = 300;
         let h =200;
         if(width>1200&&hight>500){
@@ -17,7 +16,6 @@ const userWidth =(param='album')=>{
         }
     }
     if(param==='book'){
-        console.log('book: ');
         let w = 200;
         let h =300;
         if(width>1200&&hight>500){
