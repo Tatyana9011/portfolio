@@ -5,7 +5,7 @@ import blurF from './blurF.js';
 import addFilterColor from './addFilterColor.js';
 import rainbow from './rainbow.js';
 import drowLine from './drowLine.js';
-
+import setCanvasWidthAndHeight from './setCanvasWidthAndHeight.js';
 
 const canvas = ()=>{
     console.log('canvas: ');
@@ -20,37 +20,29 @@ imageURL = document.querySelector('#imageURL'),
 colorInput=document.querySelector('.color'),
 iconGetCanvas = document.querySelector('.icon_getCanvas'),
 paramBook = document.querySelector('.book'),
-paramAlbum = document.querySelector('.album');
-
+paramAlbum = document.querySelector('.album'),
+labelCreat = document.querySelector('.labelCreat');
 
 let image=null,
-    param='album',
+    param='album',      
     user = userWidth(param),
     colorValue = colorInput.value;
 
 //
 colorInput.addEventListener('change',()=>{
   colorValue = colorInput.value;
-  drowLine('3');
-  
+  drowLine('3',param);
 })
     
-const setCanvasWidthAndHeight=(w,h)=>{
-  imgcanvas.style.width =` ${w}px`;
-  imgcanvas.style.height =` ${h}px`;
-  getCanvas.style.width =` ${w}px`;
-  getCanvas.style.height =` ${h}px`;
-}
-
 setCanvasWidthAndHeight(user[0], user[1])
 
 window.addEventListener('resize', (e) => {
   user = userWidth(param);
   setCanvasWidthAndHeight(user[0], user[1])
-  drowLine('3');
+  drowLine('3',param);
 })
 
-drowLine('3');
+drowLine('3',param);
 
 page.addEventListener('click', (event) =>{
    
@@ -63,7 +55,7 @@ page.addEventListener('click', (event) =>{
     param = 'album'
     user = userWidth(param)
     setCanvasWidthAndHeight(user[0], user[1])
-    drowLine('3');
+    drowLine('3',param);
   }
   if(target.matches('.book')){
     target.classList.add('active');
@@ -71,21 +63,29 @@ page.addEventListener('click', (event) =>{
     param = 'book';
     user = userWidth(param)
     setCanvasWidthAndHeight(user[0], user[1])
-    drowLine('3');
+    drowLine('3',param);
   }
   if(target.closest('.arrow')&&image!==null){
     image = new SimpleImage(imgcanvas);
     iconGetCanvas.style.display = 'none';
     image.drawTo(getCanvas); 
-    drowLine('3');
+    drowLine('3',param);
+    fileinput.setAttribute('disabled', 'true');
+    imageURL.setAttribute('disabled', 'true');
+    labelCreat.classList.add('disabletLable');
+    labelCreat.classList.remove('addImg');
   }
   if(target.matches('#clear2')){
     if(image!==null){
+      const drowLineCanvas = document.querySelector('.drowLine');
+      if(drowLineCanvas){
+        drowLineCanvas.remove();
+      }
       getCanvas.setAttribute('width', `${user[0]}`);
       getCanvas.width = imgcanvas.width;
       image = new SimpleImage(imgcanvas);
       image.drawTo(getCanvas); 
-      drowLine('3');
+      drowLine('3',param);
    
     }else{
       clearCanvas()
@@ -98,7 +98,7 @@ page.addEventListener('click', (event) =>{
 selectorLine.addEventListener('change',(event)=>{
  const target = event.target,
  value = target.value;
- drowLine(value);
+ drowLine(value,param);
 })
 
   imageURL.addEventListener('change',(e)=>{
@@ -129,7 +129,6 @@ selectorLine.addEventListener('change',(event)=>{
   });
 
   function startFilter(target){
-    console.log('target: ', target);
    // ||image==null&&target.closest('.moreContent')
     if(image==null&&target.matches('#rainbow')
     ||image==null&&target.matches('#lang')){
@@ -150,7 +149,7 @@ selectorLine.addEventListener('change',(event)=>{
          clearCanvas()
       }
       if(target.matches('.color') ){ 
-        drowLine('3');
+        drowLine('3',param);
       }
     }
 
@@ -171,6 +170,10 @@ selectorLine.addEventListener('change',(event)=>{
 //очищаем картинки
 function clearCanvas(){
   console.log('clearCanvas: ');
+const drowLineCanvas = document.querySelector('.drowLine');
+if(drowLineCanvas){
+  drowLineCanvas.remove();
+}
   getCanvas.setAttribute('width', `${user[0]}`);
   getCanvas.width = getCanvas.width;
   imgcanvas.setAttribute('width', `${user[0]}`);
@@ -181,7 +184,12 @@ function clearCanvas(){
   imageURL.value = '';
   getCanvas.width='300';
   iconGetCanvas.style.display = 'block';
-  drowLine('3');
+  drowLine('3',param);
+  fileinput.removeAttribute('disabled');
+  imageURL.removeAttribute('disabled');
+  labelCreat.classList.add('addImg');
+  labelCreat.classList.remove('disabletLable');
+   
  } 
 
 

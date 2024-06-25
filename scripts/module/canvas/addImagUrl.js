@@ -3,7 +3,7 @@ import {validationURL}from '../validation.js';
 
 const addImageUrl=(URL)=>{
     console.log('addImageUrl: ');
-
+//відрисовуе картинку в canvas //inputPreview 
    const inputPreview = document.querySelector('#preview'),
    imgcanvas = document.getElementById("canvasPreview");
 

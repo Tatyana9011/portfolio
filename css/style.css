@@ -285,8 +285,21 @@ border-bottom-left-radius: 50px;
     padding: 10px;
     font-size: 18px;
   }
-
-  @media (max-width: 1200px) {
+  .disabletLable{
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: #505562;
+    cursor:default ;
+    box-shadow: 9px 9px 18px rgba(136, 137, 136, 0.5), -9px -9px 18px #505562;
+    color: #68696b ;
+  }
+   @media (max-width: 1200px) {
    .close {
       top: 15%;
       right: 15%;

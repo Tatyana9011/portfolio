@@ -177,6 +177,7 @@ input#finput, input#finput2{
     height: 50px;
     filter: opacity(0.5) drop-shadow(0 0 0 rgb(245, 245, 246));
     z-index: 2000;
+    cursor: pointer;
  }
 
 
