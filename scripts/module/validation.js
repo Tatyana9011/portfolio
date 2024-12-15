@@ -13,7 +13,7 @@ export const validationURL=(URL,str)=>{
             
         }else{
 
-            addStatus(page,'Не валідна URL адреса', 3000, 'rgb(255, 100, 10)');
+            addStatus(page,'Не валідна URL адреса', 5000, 'rgb(255, 100, 10)');
             return false
         }
  

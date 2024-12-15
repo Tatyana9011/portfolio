@@ -2,8 +2,7 @@ import addFilterColor from './addFilterColor.js';
 
 const rainbow = () =>{
 const imgcanvas = document.getElementById("canvasPreview"),
-        getCanvas = document.getElementById("getCanvas"),
-        iconGetCanvas = document.querySelector('.icon_getCanvas');
+        getCanvas = document.getElementById("getCanvas");
         
     let image = new SimpleImage(imgcanvas)
     
@@ -35,7 +34,7 @@ const imgcanvas = document.getElementById("canvasPreview"),
             addFilterColor('violet',pixel)
           }
         }
-        iconGetCanvas.style.display = 'none';
+
         image.drawTo(getCanvas);
     }
 }

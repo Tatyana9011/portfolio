@@ -1,35 +1,12 @@
-import animation from "./animation.js"
 
 
-function handleInput(keyCode) {
+function handleInput(event) {
+    console.log('handleInput: ');
 
-    switch(keyCode) {
-
-        case 'ArrowUp':
-
-        animation('up');
-
-            break;
-
-        case 'ArrowDown':
-
-        animation('down');
-
-            break;
-
-        case 'ArrowLeft':
-
-        animation('left');
-
-            break;
-
-        case 'ArrowRight':
-
-        animation('right');
-
-            break;
-
-    }
+    if (event.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+    if (event.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+    if (event.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+    if (event.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
 
 }
 

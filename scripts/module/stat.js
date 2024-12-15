@@ -18,4 +18,3 @@ export const setting = {
     sun:`<ion-icon name="sunny-outline"></ion-icon>`,
   }
 
-  
