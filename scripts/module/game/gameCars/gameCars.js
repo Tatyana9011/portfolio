@@ -1,11 +1,43 @@
 import {saveDataJSON, removeDataStorage} from "../../localStorage.js"
 import stopGame from "./stopGame.js";
 import { setting, music } from "../../stat.js";
-
+import removerEventListener from "../../removerEventListener.js";
 
 const gameCars =(bool)=>{
   console.log('gameCars: ');
- if(bool){
+
+
+  const keys = {
+    ArrowUp: false,
+    ArrowDown: false,
+    ArrowRight: false,
+    ArrowLeft: false
+  };
+
+  const startRun = event => {
+
+    event.preventDefault();
+    keys[event.key] = true;
+
+    const modalOverlay = document.querySelector('.modal-overlay'); 
+    if(modalOverlay.style.display === 'none'){
+      removerEventListener('keydown', startRun);
+    }
+
+  };
+    
+  const stopRun = event => {
+    event.preventDefault();
+    keys[event.key] = false;
+
+    const modalOverlay = document.querySelector('.modal-overlay'); 
+
+    if(modalOverlay.style.display === 'none'){
+      removerEventListener('keyup', stopRun);
+    };
+  }
+   
+if(bool){
   saveDataJSON('game','car')
 
   const modalContent = document.querySelector('#modal_content');
@@ -32,14 +64,7 @@ const score = document.querySelector('.score'),
 
   car.classList.add('car');
   
-const keys = {
-  ArrowUp: false,
-  ArrowDown: false,
-  ArrowRight: false,
-  ArrowLeft: false
-};
-  
-let startSpeed = 0;
+  let startSpeed = 0;
   
 function getQuantityElements(heightElement) {
   //сколько елементов (количество машин) поместется на странице
@@ -191,23 +216,15 @@ const startGame = (event) => {
   requestAnimationFrame(playGame);
 };
   
-const startRun = event => {
-  event.preventDefault();
-  keys[event.key] = true;
-};
-  
-const stopRun = event => {
-  event.preventDefault();
-  keys[event.key] = false;
-};
- 
-  
 startBtn.forEach(start => start.addEventListener('click', startGame));
+
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
+
 }else{
-  removeDataStorage('game')
+
   stopGame()
+    
 }
 }
 export default gameCars;

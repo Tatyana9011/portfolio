@@ -2,11 +2,12 @@
 import {exchangeAPI} from '../api/api.js'
 import { errorFatch } from '../api/errorFatch.js';
 import timeNow from './timeNow.js';
-
+import gorosckop from './phoneGorosckop/gorosckop.js';
 
 const homePage = ()=>{
     console.log('homePage: ');
     timeNow();
+    gorosckop();
     const exchangeData=(data, eror)=>{
         console.log('eror: ', eror);
         const reg = /Закінчився ліміт на запити/;

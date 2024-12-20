@@ -11,7 +11,7 @@ const canvas = ()=>{
     console.log('canvas: ');
 
 const fileinput = document.getElementById("finput"),
-page= document.querySelector(".image"),
+page= document.querySelector(".imageCanvas"),
 imgcanvas = document.getElementById("canvasPreview"),
 getCanvas = document.getElementById("getCanvas"),
 selector = document.getElementById("lang"),

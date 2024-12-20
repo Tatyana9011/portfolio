@@ -8,16 +8,15 @@ import closeModal from "./module/modal/closeModal.js";
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-
 const menuToggle = document.querySelector(".menuToggle"),
 sidebar = document.querySelector(".sidebar"),
 modal = document.querySelector(".modal");
 
 let hash=null;
 
-const dataPage = getDataStorage('page');
+const dataPage = getDataStorage('page')? getDataStorage('page'):'Home';
 if(dataPage){
-    console.log('dataPage: ', dataPage);
+
     getPage(dataPage);//откриваем необходимую страницу в соответствии с текстом на линке
     activeLink(dataPage); //активуємо лінку в меню
 }

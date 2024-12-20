@@ -15,8 +15,8 @@ const timeNow =()=>{
           return td[0].textContent = time
         }, 1000);
 
-        let week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'],
-      toDay = new Date().getDay() - 1;
+        let week = ['вс','пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+      toDay = new Date().getDay();
       for (let i = 0; i < week.length; i++) {
         if (i === toDay) {
            td[2].innerHTML=`<p><b><i>${week[i]}</i></b></p>`;

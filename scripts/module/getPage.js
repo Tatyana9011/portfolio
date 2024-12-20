@@ -4,17 +4,16 @@ import { saveDataJSON } from "./localStorage.js";
 import gamePage from "./game/gamePage.js";
 
 
-const getPage = (str)=>{ //откриваем необходимую страницу в соответствии с текстом на линке
-    console.log('getPage: ');
+const getPage = (str='Home')=>{ //откриваем необходимую страницу в соответствии с текстом на линке
+    console.log('getPage: ', str);
   
-    const canvasImg = document.querySelector(".image"),
+    const ollPages = document.querySelectorAll(".page"),
+          canvasImg = document.querySelector(" .imageCanvas"),
           formPage = document.querySelector(".settings"),
           getHomePage = document.querySelector(".home"),
           order = document.querySelector(".order"),
           analytics = document.querySelector(".analytics"),
-          game = document.querySelector(".game"),
-          ollPages = document.querySelectorAll(".page");
-
+          game = document.querySelector(".game");
 
         ollPages.forEach((item)=>{
             if(item.getAttribute('style')!=="display:none"){
