@@ -1,4 +1,4 @@
-import { setting, music } from "../../stat.js";
+import { setting, music } from "../../state.js";
 
 const stopGame =()=>{
   console.log('stopGame: ');

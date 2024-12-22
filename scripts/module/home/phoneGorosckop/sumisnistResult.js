@@ -1,7 +1,8 @@
 import { getDataStorage } from "../../localStorage.js";
-import { db, db_result, tableSumisnisty } from "../../stat.js";
+import { db, db_result, tableSumisnisty } from "../../state.js";
 import goBack from "./goBack/goBack.js";
 import renderSumisnisty from "./renderSumisnisty.js";
+import showResult from "./showResult.js";
 
 const sumisnistResult = ()=>{
     console.log('sumisnistResult: ');
@@ -19,7 +20,7 @@ const sumisnistResult = ()=>{
     const index0 = db.findIndex(nameSind0);
     const index1 = db.findIndex(nameSind1);
 
-    const namberSumisnosty = tableSumisnisty[index0-1][index1-1];
+    const namberSumisnosty = tableSumisnisty[index0][index1];
 
     contentSigns.innerHTML = `
             <div class='goBack'>
@@ -65,8 +66,15 @@ const sumisnistResult = ()=>{
        </div>
    </div>
     `
-    goBack(elemArr0.name)
-    const footerHeart = document.querySelector('.heart')
-    footerHeart.addEventListener('click',renderSumisnisty);
+    const footer = document.querySelector('.resultFooter')
+        footer.addEventListener('click',(e)=>{
+            const target = e.target;
+            if(target.closest('.moon')){
+                showResult(elemArr0.name)
+            }
+        });
+
+    goBack(elemArr0.name,'sumisnisty');
+    
 }
 export default sumisnistResult;

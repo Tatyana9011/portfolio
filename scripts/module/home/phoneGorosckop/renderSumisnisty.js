@@ -1,5 +1,5 @@
 import { getDataStorage, saveDataJSON } from '../../localStorage.js';
-import { db } from '../../stat.js';
+import { db } from '../../state.js';
 import appendGroup from './SetGroup/appendGroup.js';
 import goBack from './goBack/goBack.js';
 import sumisnistResult from './sumisnistResult.js';
@@ -9,7 +9,7 @@ import showResult from './showResult.js';
 const renderSumisnisty =()=>{
     console.log('renderSumisnisty: ');
    
-    const sign = getDataStorage('signChange');
+    const sign = getDataStorage('signChange'); //який в нас знак зодіаку 
     const elemArr = db.find(item=>item.name===sign);
     const contentSigns = document.querySelector('.content_signs');
 
@@ -41,16 +41,15 @@ const renderSumisnisty =()=>{
         </div>
     </div>
         ` 
+       appendGroup() //рендерить всі групи знаків на торінку
        
-       
-       appendGroup()
-       goBack(elemArr.name)
 
        const signs = document.querySelector('.signs');
        signs.addEventListener('click', clickSign.bind(this,'sumisnisty'))
 
-        const button = document.querySelector('.change');
-        button.addEventListener('click',sumisnistResult) 
+       const changeButton = document.querySelector('.change');
+        //добавляем слушатель клика на кнопку
+        changeButton.addEventListener('click',sumisnistResult);
 
         const footer = document.querySelector('.resultFooter')
         footer.addEventListener('click',(e)=>{
@@ -65,7 +64,8 @@ const renderSumisnisty =()=>{
             }
 
         });
-       
+
+        goBack(elemArr.name,'signChange') //якщо натиснути всі знаки то поверне до сторінки вибрати знак зодіаку
        
 
 }

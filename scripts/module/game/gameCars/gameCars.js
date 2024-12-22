@@ -1,6 +1,6 @@
 import {saveDataJSON, removeDataStorage} from "../../localStorage.js"
 import stopGame from "./stopGame.js";
-import { setting, music } from "../../stat.js";
+import { setting, music } from "../../state.js";
 import removerEventListener from "../../removerEventListener.js";
 
 const gameCars =(bool)=>{

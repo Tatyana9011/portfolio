@@ -188,7 +188,7 @@ input#finput, input#finput2{
  }
 
 
-.arrow{
+ .canvas_content .arrow{
   display: flex;
   cursor: pointer;
   color: var(--color1);
@@ -200,7 +200,7 @@ input#finput, input#finput2{
     border: 1px solid #ffffff;
     transition: all 0.5s ease-in-out;
   }
-  .arrow:hover{
+  .canvas_content .arrow:hover{
     border: 3px solid var(--color1);
     box-shadow:0 0 5px var(--color1);
   }

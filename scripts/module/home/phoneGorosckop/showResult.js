@@ -1,5 +1,5 @@
 import { removeDataStorage } from '../../localStorage.js';
-import {db} from '../../stat.js';
+import {db} from '../../state.js';
 import goBack from './goBack/goBack.js';
 
 import renderSumisnisty from './renderSumisnisty.js';
@@ -65,7 +65,7 @@ const showResult=(title)=>{
     </div>
     `
  
-    goBack(elemArr.name)
+    goBack(elemArr.name,'signChange')
 
    const footerHeart = document.querySelector('.heart')
    

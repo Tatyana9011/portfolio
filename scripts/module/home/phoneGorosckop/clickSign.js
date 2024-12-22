@@ -1,10 +1,11 @@
-import { db } from "../../stat.js";
-import { saveDataJSON } from "../../localStorage.js";
+import { db } from "../../state.js";
+import { saveDataJSON, getDataStorage } from "../../localStorage.js";
+import activeSign from "./activeSign.js";
 
 
+//добавляем активную линку на другой знак при клике + показіваем кнопку продолжить 
 const clickSign = (str,e)=>{
     console.log('str: ', str);
-    console.log('e: ', e);
     console.log('clickSign: ');
     const changeButton = document.querySelector('.change');
     const signs = document.querySelector('.signs');
@@ -13,22 +14,19 @@ const clickSign = (str,e)=>{
     const elem = e.target;
     const sign = elem.closest('.sign');
     const titleElem = sign.querySelector('p').textContent;
+
     changeButton.classList.add('active');
+
     const elemArr = db.find(item=>item.name===titleElem)
-    saveDataJSON(str, titleElem)
-    allSigns.forEach(item=>{
-         const activeSign = item.querySelector('.imageActive');
-        if(activeSign){
-            const titleActive = item.querySelector('p').textContent
-            const elemArr = db.find(item=>item.name===titleActive)
-            activeSign.classList.remove('imageActive');
-            item.innerHTML=`
-            <div>
-                <img src="./image/${elemArr.nickName}.png" alt=""/>
-            </div>
-            <p>${titleActive}</p>`
-        }
-    })
+
+    if(!str){
+        saveDataJSON('signs', titleElem)
+    }else{
+        saveDataJSON(str, titleElem) 
+    }
+
+    allSigns.forEach(item=>activeSign(item))
+
     if (elem.closest('.sign')){
         sign.innerHTML=`
         <div class='imageActive'>
@@ -36,5 +34,6 @@ const clickSign = (str,e)=>{
         </div>
         <p>${titleElem}</p>`
     }
+
 }
 export default clickSign;

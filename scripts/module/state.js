@@ -140,3 +140,46 @@ export const db_result = [
 [2,4,1,5,1,3,2,5,1,4,1,3]
 ]
   
+
+export const colors = {
+  blue: {
+    50: {
+      value: "#e3f2fd"
+    },
+    100: {
+      value: "#bbdefb"
+    }
+  },
+  green: {
+    50: {
+      value: "#e8f5e9"
+    },
+    100: {
+      value: "#c8e6c9"
+    }
+  },
+  purple: {
+    50: {
+      value: "#f3e5f5"
+    },
+    100: {
+      value: "#e1bee7"
+    }
+  },
+  orange: {
+    50: {
+      value: "#ffe0b2"
+    },
+    100: {
+      value: "#ffe0b2"
+    }
+  },
+  red: {
+    50: {
+      value: "#ffebee"
+    },
+    100: {
+      value: "#ffcdd2"
+    }
+  }
+};

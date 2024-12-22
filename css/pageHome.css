@@ -78,6 +78,10 @@ th{
  tr:nth-child(even){
    background: #dedddd;
  }
+ .head_title{
+  display: block;
+  color:var(--color1) ;
+ }
  .phone{
   display: flex;
   flex-direction: column;
@@ -200,7 +204,7 @@ th{
   cursor: pointer;
   height: 50px;
  }
- p {
+p {
   color: var(--black);
   font-family: montserrat;
   font-size: 16px;
@@ -211,7 +215,8 @@ th{
 .aroundText{
   margin-top: 32px;
 }
-.text{
+
+.discription .text{
   margin-bottom: 15px;
 }
 .result{
@@ -252,7 +257,16 @@ height: 1px;
 margin-bottom: 10px;
 background: #cfcece;
  }
- 
+ .discription{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+
+ }
+ .discription.text{
+  margin: 15px 20px;
+ }
  
  
  
