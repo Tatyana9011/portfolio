@@ -5,11 +5,14 @@ const $ = (s, o = document) => o.querySelector(s);
 const $$ = (s, o = document) => o.querySelectorAll(s);
 
 $$('.button').forEach(button => {
-
+//progress  ye;yj e,bhfnm
     let count = { number: 0 },
+        line =  $('.line',button),
         iconDiv = $('.icon > div', button),
         arrow = $('.icon .arrow', button),
         countElem = $('span', button),
+        progress=$('.progress'),
+        arrowProgress=$('.arrow_progress'),
         svgPath = new Proxy({
             y: null,
             s: null,
@@ -33,13 +36,14 @@ $$('.button').forEach(button => {
     svgPath.f = 8;
     svgPath.l = 32;
 
+
     button.addEventListener('click', e => {
         if(!button.classList.contains('loading')) {
-            console.log('louding not');
+            
             if(!button.classList.contains('animation')) {
-                console.log('louding animation not');
                 button.classList.add('loading', 'animation');
 
+                //робимо стрілку прямою лінією
                 gsap.to(svgPath, {
                     f: 2,
                     l: 38,
@@ -54,7 +58,7 @@ $$('.button').forEach(button => {
                     delay: .15,
                     ease: Elastic.easeOut.config(1, .4)
                 });
-
+                //заповнюємо проценти загрузки від 0 до 100
                 gsap.to(count, {
                     number: '100',
                     duration: 3.8,
@@ -63,20 +67,22 @@ $$('.button').forEach(button => {
                         countElem.innerHTML = Math.round(count.number) + '%';
                     }
                 });
-
+                line.style.setProperty('opacity','0'); //ховаємо лінію до стрілки
+                arrow.style.setProperty('opacity','0');//ховаємо стрілку
                 setTimeout(() => {
-                    iconDiv.style.setProperty('overflow', 'visible');
+                    iconDiv.style.setProperty('overflow', 'visible'); // показуємо галочку
                     setTimeout(() => {
                         button.classList.remove('animation');
+                        progress.remove()
                     }, 600);
                 }, 4820);
 
             }
 
         } else {
-                console.log('louding');
+
             if(!button.classList.contains('animation')) {
-                console.log('louding $ animation not');
+               
                 button.classList.add('reset');
 
                 gsap.to(svgPath, {
@@ -91,11 +97,15 @@ $$('.button').forEach(button => {
                     duration: .4
                 });
 
+                arrow.style.setProperty('opacity','1');
+                line.style.setProperty('opacity','1');
+                
                 setTimeout(() => {
-                    button.classList.remove('loading', 'reset');
-                    iconDiv.removeAttribute('style');
-                }, 400);
 
+                    iconDiv.removeAttribute('style');
+                    button.classList.remove('loading','reset');
+                    arrowProgress.append(progress)
+                }, 400);
             }
 
         }
@@ -120,7 +130,7 @@ function getPoint(point, i, a, smoothing) {
         cpe = cp(point, a[i - 1], a[i + 1], true);
     return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
 }
-
+//функція що міняе пас
 function getPath(update, first, last, smoothing, pointsNew) {
     let points = pointsNew ? pointsNew : [
             [first, 16],

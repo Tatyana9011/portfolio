@@ -1,7 +1,7 @@
 import stopSnackGame from "./stopSnackGame.js";
 import removerEventListener from "../../removerEventListener.js";
 
-const animation = (bool) => {
+const snackAnimation = (bool) => {
     console.log('animation: ');
     let direction = 'right';
     let gameInterval;
@@ -33,7 +33,7 @@ const animation = (bool) => {
 
     if (bool) {
      
-      const canvas = document.getElementById('myCanvas');
+      const canvas = document.getElementById('canvasGame');
       let ctx = canvas.getContext('2d');
       const box = 20;
       let snake = [{x:10*box, y:10*box}];
@@ -50,7 +50,6 @@ const animation = (bool) => {
   }  
 
   function drawGame() {
-    console.log('drawGame: ');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   
     // Draw the food
@@ -110,4 +109,4 @@ const animation = (bool) => {
 
 
 };
-export default animation;
+export default snackAnimation;

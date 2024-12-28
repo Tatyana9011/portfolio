@@ -2,6 +2,7 @@
 <html lang="ua">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!--без єтого могут не работать @media адаптация в css -->
 	<title>Portfolio</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="shortcut icon" href="#">
@@ -21,17 +22,24 @@
 </head>
 
 <body>
-	<div class="menuToggle"></div>
+	<div class="menuToggle draggable" id="draggable" style="display: none;"> </div>
 	<div class="sidebar">
 		<ul>
 			<li class="logo" style="--bg:#333;">
-				<a href="#Home">
+				<a href="#Carusel">
 					<div class="icon"><ion-icon name="logo-apple"></ion-icon>
 					</div>
 					<div class="text">Website Logo</div>
 				</a>
 			</li>
 			<div class="Menulist">
+				<li class="all_sidebar" style="--bg:#f44336;">
+					<a href="#">
+						<div class="icon one active"><ion-icon name="code-working-outline"></ion-icon></div>
+						<div class="icon two"><ion-icon name="chevron-back-outline"></ion-icon></div>
+						<div class="text">Hid sidebar</div>
+					</a>
+				</li>
 				<li style="--bg:#f44336;" class="link active">
 					<a href="#Home">
 						<div class="icon"><ion-icon name="home-outline"></ion-icon></div>
@@ -54,7 +62,7 @@
 				<li style="--bg:#2196f3;"class="link">
 					<a href="#Analytics">
 						<div class="icon"><ion-icon name="bar-chart-outline"></ion-icon></div>
-						<div class="text">Analytics</div>
+						<div class="text">Preloader</div>
 					</a>
 				</li>
 
@@ -73,7 +81,7 @@
 			</div>
 		</ul>
 	</div>
-	<div class="content">
+
 		<div class="page home" >
 			<div class="info_content__time">
 				<div class="time"> 	
@@ -161,9 +169,16 @@
 			</div>
 			</div>
 			
-			<h2>Домашня сторінка презентації</h2>
-			<p class="head_title"> Home Page Title			</p>
-			<div class="phone">
+			<h2 class="home_page_title">Домашня сторінка презентації</h2>
+			
+			<div class=" wrapper_content_homePage">
+				<div class="home_content">
+					<div class="home_chackbox">
+						<input type="checkbox" id="toggle"/>
+						<label for="toggle"></label>
+					</div>
+					
+					<div class="phone">
 				<div class="top"><img src="./image/top.png" alt=""/></div>
 				<div class = "phone_content" >
 					<div class = "image_goroscope">
@@ -178,26 +193,29 @@
 										
 				</div>
 
-		</div>
-														
-	</div>
-		<div class="page game" id="universe" style="display: none;">
-			<div class="l_container">
-				
- 				 <div class="b_game_card">
-  				 	<div class="b_game_card__cover" id="newGame" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_1.jpg);"></div>
-  				</div>
-  				<div class="b_game_card">
-   				 	<div class="b_game_card__cover" id="boardColor" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_2.jpg);"></div>
-  				</div>
-  				<div class="b_game_card">
-  					 <div class="b_game_card__cover" id="circle" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_3.jpg);"></div>
- 				</div>
- 				 <div class="b_game_card">
-    				<div class="b_game_card__cover" id="car"style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_4.jpg);"></div>
-  				</div>
+					</div>
+				</div>
 			</div>
-		</div>
+		</div>												
+
+		<div class="page game" id="universe" style="display: none;">
+				
+				<div class="l_container">
+ 				 	<div class="b_game_card">
+  				 		<div class="b_game_card__cover" id="newGame" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_1.jpg);"></div>
+  					</div>
+  					<div class="b_game_card">
+   				 		<div class="b_game_card__cover" id="boardColor" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_2.jpg);"></div>
+  					</div>
+  					<div class="b_game_card">
+  					 	<div class="b_game_card__cover" id="circle" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_3.jpg);"></div>
+ 					</div>
+ 				 	<div class="b_game_card">
+    					<div class="b_game_card__cover" id="car"style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_4.jpg);"></div>
+  					</div>
+				</div>
+			
+		</div>	
 		<div class="page  imageCanvas" style="display: none;">
 			<div class="title"> 
 				<div>
@@ -363,6 +381,8 @@
 				</div>
 			  	</nav>
 			</div>
+		</div>
+			<div class="page curusel">
 				<div class="anime_checkbox">
 					<div id="drag-container">
 						<div id="spin-container">
@@ -377,29 +397,26 @@
 						  <!-- Example image with link -->
 						  <a target="_blank" href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg">							
 						  </a>
-					  
 						</div>						  
 					</div>
-					<div id="ground"></div>
 		  
 	  			</div>
-		</div>
+			</div>
 
 		<div class="page order" style="display: none;">
-			<p class="head_title">Можна "поюзати" різні анімації</p>
 			<div class="order_content">
 				
-				
-				<button class="button">
+				<div class="wrapper_button">
+					<button class="button">
 					<svg class="circle" viewBox="0 0 76 76">
 						<circle class="default" cx="38" cy="38" r="36"></circle>
 						<circle class="active" cx="38" cy="38" r="36"></circle>
 					</svg>
 					<div class="icon">
-						<svg class="line" viewBox="0 0 4 37">
+						<svg class="line1" viewBox="0 0 4 37">
 							<line x1="2" y1="2" x2="2" y2="35"></line>
 						</svg>
-						<div>
+						<div class="arrow_progress">
 							<svg class="arrow" viewBox="0 0 40 32">
 								<path d="M 8,16 C 8,16 20,30 20,30 C 20,30 32,16 32,16"></path>
 								<path d="M 2,16 C 5.6,16 12.8,16 20,16 C 27.2,16 34.4,16 38,16"></path>
@@ -410,15 +427,103 @@
 						</div>
 					</div>
 					<span>0%</span>
-				</button>
+					</button>
+				</div>	
+				<div class="wrapper">
+					<div class="all-toggle-wrapper">
+						<div class ="toggle-wrapper">
+					<div class = "toggle normal">
+						<input id="normal" type="checkbox">
+						<label class="toggle-item" for="normal"></label>
+					</div>
+					<div class="name">Normal</div>
+						</div>
+						<div class ="toggle-wrapper">
+					<div class="toggle transparent">
+						<input id="transparent" type="checkbox">
+						<label class="toggle-item" for="transparent"></label>
+	  				</div>
+					<div class="name">Transparent</div>
+		
+						</div>
+						<div class="toggle-wrapper">
+					<div class="toggle checkcross">
+					  <input id="checkcross" type="checkbox">
+					  <label class="toggle-item" for="checkcross">
+						<div class="check"></div>
+					  </label>
+					</div>
+					<div class="name">Yes &amp; No</div>
+				 		 </div>
 
-			
-			
+				 		 <div class="toggle-wrapper">
+					<div class="toggle">
+					  <input id="gravity" type="checkbox">
+					  <label class="toggle-item" for="gravity"></label>
+					</div>
+					<div class="name">Gravity</div>
+				  		</div>
 
+				  		<div class="toggle-wrapper">
+					<div class="toggle pancake-stack">
+					  <input id="pancake" type="checkbox">
+					  <label class="toggle-item" for="pancake">
+						<div class="pancakes">
+						  <div class="pancake"></div>
+						  <div class="pancake"></div>
+						  <div class="pancake"></div>
+						  <div class="butter"></div>
+						</div>
+					  </label>
+					</div>
+					<div class="name">Pancake Stacks</div>
+				  		</div>
+				  		<div class="toggle-wrapper">
+					<div class="toggle dog-rollover">
+					  <input id="doggo" type="checkbox">
+					  <label class="toggle-item" for="doggo">
+						<div class="dog">
+						  <div class="ear"></div>
+						  <div class="ear right"></div>
+						  <div class="face">
+							<div class="eyes"></div>
+							<div class="mouth"></div>
+						  </div>
+						</div>
+					  </label>
+					</div>
+					<div class="name">Doggo Wants a Treat</div>
+				  		</div>
+					</div>
+					<div class="ball_wrap">
+					 	 <div class="toggle-wrapper">
+						<div class="toggle basketball-hoop">
+						  <input id="hoop" type="checkbox">
+						  <label class="toggle-item" for="hoop">
+							<div class="ball__wrapper">
+							  <div class="ball"></div>
+							</div>
+							<div class="hoop"></div>
+						  </label>
+						</div>
+						<div class="name">Kobe Bryant Tribute</div>
+					  	</div>
+							
+						<div class="toggle-wrapper">
+					<div class="toggle beer-pong">
+					  <input id="beer-pong" type="checkbox">
+					  <label class="toggle-item" for="beer-pong"></label>
+					  <div class="cup">
+						<div class="lid"></div>
+					  </div>
+					</div>
+					<div class="name">Beer Pong</div>
+				  		</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		
 		<div class="modal-overlay"></div>
 		<div class="modal">
 			<div class="close"></div>

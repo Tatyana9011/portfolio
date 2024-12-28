@@ -5,7 +5,7 @@ import goBack from './goBack/goBack.js';
 import sumisnistResult from './sumisnistResult.js';
 import clickSign from './clickSign.js';
 import showResult from './showResult.js';
-
+import scrollTopII from '../../scrollTopII.js';
 const renderSumisnisty =()=>{
     console.log('renderSumisnisty: ');
    
@@ -50,23 +50,28 @@ const renderSumisnisty =()=>{
        const changeButton = document.querySelector('.change');
         //добавляем слушатель клика на кнопку
         changeButton.addEventListener('click',sumisnistResult);
-
+       // scrollTopII('phone_content',)
         const footer = document.querySelector('.resultFooter')
         footer.addEventListener('click',(e)=>{
+
+            const bool =  changeButton.classList.contains("active");
             const target = e.target;
 
             if(target.closest('.moon')){
 
                 showResult(elemArr.name)
+
             }
-            if(target.closest('.heart')){
+            if(target.closest('.heart')&&!bool){
                 alert('Обери знак зодіаку, щоб дізнатися сумісність')
+            }else if(target.closest('.heart')&&bool){
+                sumisnistResult();
             }
 
         });
 
         goBack(elemArr.name,'signChange') //якщо натиснути всі знаки то поверне до сторінки вибрати знак зодіаку
-       
+       scrollTopII('.content_signs');
 
 }
 export default renderSumisnisty;

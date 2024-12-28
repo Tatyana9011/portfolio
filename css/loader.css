@@ -113,8 +113,26 @@
       opacity: 0;
     }
   }
-    
-  .wrapper {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .content_louder .wrapper {
     margin: 0 auto;
     margin-top: calc((100vh - 75vmin) / 2);
     overflow: hidden;
@@ -138,13 +156,34 @@
 }
 .content_louder{
     background-color: #1d1f20;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 460px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
     margin-top: 15px;
- }
+    overflow-y: scroll;
+}
+
+
+.content_louder::-webkit-scrollbar{
+ width: 7px;
+ background-color: #060606;
+ height: 500px;
+ border-radius:5px
+}
+
+.content_louder::-webkit-scrollbar-button {
+height: 400px;
+}
+
+.content_louder::-webkit-scrollbar-thumb{
+border-radius:5px;
+background-color: #f6f6f8;
+}
+
+
  section {
     flex: 1 1 25%;  
   }

@@ -5,7 +5,6 @@ import activeSign from "./activeSign.js";
 
 //добавляем активную линку на другой знак при клике + показіваем кнопку продолжить 
 const clickSign = (str,e)=>{
-    console.log('str: ', str);
     console.log('clickSign: ');
     const changeButton = document.querySelector('.change');
     const signs = document.querySelector('.signs');
@@ -13,27 +12,32 @@ const clickSign = (str,e)=>{
 
     const elem = e.target;
     const sign = elem.closest('.sign');
-    const titleElem = sign.querySelector('p').textContent;
+    const element = sign.querySelector('p');
 
-    changeButton.classList.add('active');
+    if(element){
+       const titleElem = element.textContent;
+        changeButton.classList.add('active');
+        const elemArr = db.find(item=>item.name===titleElem)
 
-    const elemArr = db.find(item=>item.name===titleElem)
+        if(!str&&elemArr){
+            saveDataJSON('signs', titleElem)
+        }else{
+            saveDataJSON(str, titleElem) 
+        }
 
-    if(!str){
-        saveDataJSON('signs', titleElem)
-    }else{
-        saveDataJSON(str, titleElem) 
+        allSigns.forEach(item=>activeSign(item))
+
+        if (elem.closest('.sign')){
+            sign.innerHTML=`
+            <div class='imageActive'>
+                <img src="./image/${elemArr.nickName} (1).png" alt=""/>
+            </div>
+            <p>${titleElem}</p>`
+        }
+
     }
-
-    allSigns.forEach(item=>activeSign(item))
-
-    if (elem.closest('.sign')){
-        sign.innerHTML=`
-        <div class='imageActive'>
-            <img src="./image/${elemArr.nickName} (1).png" alt=""/>
-        </div>
-        <p>${titleElem}</p>`
-    }
+   
+  
 
 }
 export default clickSign;

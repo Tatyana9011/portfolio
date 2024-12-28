@@ -19,6 +19,7 @@ imageURL = document.querySelector('#imageURL'),
 paramBook = document.querySelector('.book'),
 paramAlbum = document.querySelector('.album'),
 labelCreat = document.querySelector('.labelCreat');
+console.log('labelCreat: ', labelCreat);
 
 
 let image=null,

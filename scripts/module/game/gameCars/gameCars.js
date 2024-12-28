@@ -77,6 +77,7 @@ const getRandomEneme = (max) => {
 //имитация движения автомобиля
 const moveRoad = () => {
   let lines = document.querySelectorAll('.line');
+
   lines.forEach(line => {
     line.y += setting.speed;
     line.style.top = line.y + 'px';
@@ -170,7 +171,11 @@ const changeLevel = event => {
 };
   
 const startGame = (event) => {
-  startBtn.forEach(btn => btn.disabled = true);
+  startBtn.forEach(btn => {
+    btn.disabled = true;
+    btn.style.color="#c3c1c1";
+    btn.style.cursor = "default";
+  });
   changeLevel(event);
   //document.body.append(music);
   music.play();

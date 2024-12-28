@@ -1,19 +1,16 @@
-.content .game{
-  width: 75%;
-  overflow: hidden;
+
+.game .page{
+  width: 100vh;
 }
+
 .game{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-top: 1em;
+  justify-content: space-between;
   margin-bottom: 1em;
   box-sizing: border-box;
-  box-shadow: 9px 9px 18px #5773c7,-9px -9px 18px #6b707b;
-  border-radius: 5px;
-  min-height: 100vh;
-}
+  height: 2000px;
+} 
+
 .game h2 {
   display: flex;
   justify-content: center;
@@ -56,6 +53,7 @@
 }
 
 .l_container {
+  position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,6 +61,7 @@
   width: 100%;
   max-width: 1200px;
   padding: 30px;
+  flex-wrap: wrap
 }
 
 .b_game_card {
@@ -161,6 +160,7 @@
   cursor: pointer;
   padding: 5px 10px;
 }
+
 .score {
   position: absolute;
   left: 0;
@@ -261,7 +261,9 @@ a:hover {
   transition: margin 0.5s ease-out;
   background: linear-gradient(90deg, #29323C 0%, #485563 100%);
 }
-
+.screen h3{
+  margin-bottom: 30px;
+}
 .screen.up {
   margin-top: -100vh;
 }
@@ -313,12 +315,30 @@ a:hover {
   border-radius: 30px;
   overflow: hidden;
 }
+#canvasGame{
+  background: linear-gradient(118.38deg, #29323C -4.6%, #485563 200.44%);
+  box-shadow: -8px -8px 20px #b4ceec, 10px 7px 20px #475462;
+}
+#finishGameContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
 
 .startGame_btn{
 margin: 10px 10px;
-padding: 10px 20px;
+padding: 15px 30px;
 border-radius: 5px;
+cursor: pointer;
+box-shadow:-8px -8px 20px #2A333D, 10px 7px 20px #596471;
+transition: all .3s ease-in-out;
 }
+.startGame_btn:hover{
+  background: linear-gradient(118.38deg, #273340 -4.6%, #37495e 200.44%);
+  box-shadow:-5px -5px 20px #5c5c5e, 10px 7px 20px #9babbf;
+}
+
 .circle {
   background: linear-gradient(90deg, #16D9E3 0%, #30C7EC 47%, #46AEF7 100%);
   position: absolute;
@@ -328,6 +348,9 @@ border-radius: 5px;
 .text_info{
   display: flex;
   flex-direction: row;
+}
+.textGame{
+  color: #c3c1c1;
 }
  .all_button{
   width: 30%;
@@ -341,13 +364,17 @@ border-radius: 5px;
   display: flex;
   flex-direction: column;
  }
+.game_modal{
+  width: 100%;
+  height: 100%;
+  background-color: #41943f;
+}
+@media (max-width: 1250px) {
 
-
-
-@media screen and (max-width: 760px) {
     .l_container{
-        grid-template-columns: repeat(2, 1fr);
+       padding-left: 100px;
+       gap: 20px;
     }
-    
   }
-  
+
+     

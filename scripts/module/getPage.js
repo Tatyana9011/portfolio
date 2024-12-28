@@ -4,7 +4,7 @@ import { saveDataJSON, removeDataStorage,getDataStorage } from "./localStorage.j
 import gamePage from "./game/gamePage.js";
 import loaderPage from "./loader/loaderPage.js";
 import settingsPage from "./settingsPage/settingsPage.js";
-import animetidCarusel from "./settingsPage/animetidCarusel.js";
+import animetidCarusel from "./carusel/animetidCarusel.js";
 import orderPage from "./orderPage/orderPage.js";
 
 const getPage = (str='Home')=>{ //откриваем необходимую страницу в соответствии с текстом на линке
@@ -17,6 +17,7 @@ const getPage = (str='Home')=>{ //откриваем необходимую ст
           order = document.querySelector(".order"),
           analytics = document.querySelector(".analytics"),
           game = document.querySelector(".game"),
+          curusel = document.querySelector(".curusel"),
           getPage = getDataStorage('page');
 
         ollPages.forEach((item)=>{
@@ -37,7 +38,7 @@ const getPage = (str='Home')=>{ //откриваем необходимую ст
         }else if(str==="Settings"){
             formPage.setAttribute('style', 'displey:block');
             settingsPage();
-            animetidCarusel();
+            
         }else if(str==="Home"){
             getHomePage.setAttribute('style', 'displey:flex');
             homePage()
@@ -50,6 +51,9 @@ const getPage = (str='Home')=>{ //откриваем необходимую ст
         }else if(str==="Game"){
             game.setAttribute('style', 'displey:flex');
             gamePage()
+        }else if(str==="Carusel"){
+            curusel.setAttribute('style', 'displey:flex');
+            animetidCarusel();
         }
         saveDataJSON("page",str)
 }

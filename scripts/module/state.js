@@ -8,6 +8,10 @@ export const setting = {
     record: getDataStorage('score'),
   };
 
+  export const objScore={
+    score:0
+  }
+
   export const music = new Audio('../../../../music/muzyka-dlya-igr-15.mp3');
 
   export const weatherIcon = {

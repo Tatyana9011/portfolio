@@ -5,6 +5,18 @@
   --orange:#F57A28;
   --background:#F0F2F8;
 }
+
+.page .home{
+  width: 1200px;
+}
+.home_page_title{
+display: flex;
+justify-content: center;
+align-items:center;
+
+
+}
+
 .info_content__weather,
 .info_content__exchange,
 .info_content__time{
@@ -19,13 +31,17 @@
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ user-select: none;
  border-radius: 5px;
  }
+ .info_content__time{
+    top:100px;
+ }
 .info_content__exchange{
-   top:250px;
+   top:350px;
 }
 .info_content__weather{
- top:100px;
+ top:200px;
 }
 .weather{
     width: 100%;
@@ -79,27 +95,134 @@ th{
    background: #dedddd;
  }
  .head_title{
+  user-select: none;
   display: block;
   color:var(--color1) ;
  }
+
+.wrapper_content_homePage{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+ }
+ .home_content{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+ }
+ .home_chackbox{
+  min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  margin-right: 20px;
+  }
+
+ .home_chackbox input[type="checkbox"] {
+	visibility: hidden;
+	&:checked + label {
+		transform: rotate(360deg);
+		background-color: #FFF;
+    border: 6px solid var(--orange);
+		&:before {
+			transform: translateX(90px);
+			background-color: var(--orange);
+		}
+	}
+}
+
+.home_chackbox label {
+	display: flex;
+	width: 180px;
+	height: 90px;
+	border: 6px solid  ;
+	border-radius: 99em;
+	position: relative;
+	transition: all .75s ease-in-out;
+	transform-origin: 50% 50%;
+	cursor: pointer;
+
+	
+	&:before {
+		transition: transform .75s ease;
+		transition-delay: .5s;
+		content: "";
+		display: block;
+		position: absolute;
+		width: 54px;
+		height: 54px;
+		background-color: #faf7f7;
+		border-radius: 50%;
+		top: 12px;
+		left: 12px;
+	}
+} 
+
+
+
+
+
+
  .phone{
   display: flex;
   flex-direction: column;
   align-items: start;
+  position: relative;
   justify-content:space-between;
   max-width: 428px;
-  height: auto;
-  overflow: auto;
-  border-radius:30px;
+  height: 667px;
   margin-top: 30px;
-  background: var(--background)             
+  background: var(--background) ;
+ 
+  -moz-user-select: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;         
  }
 
- .phone .phone_content {
+ .phone .content_signs {
   display: flex;
   flex-direction: column;
+  height: 650px;
+  margin-top: 40px;
   align-items:center;
+
+  overflow-y: scroll;   
+  overflow-x: hidden; 
+
  }
+ .phone .phone_content::-webkit-scrollbar,
+ .phone .content_signs::-webkit-scrollbar{
+    width: 7px;
+    background-color: #f5f5fd;
+    height: 500px;
+    border-radius:5px
+ }
+ .phone .phone_content::-webkit-scrollbar-button,
+ .phone .content_signs::-webkit-scrollbar-button {
+  height: 400px;
+}
+.phone .phone_content::-webkit-scrollbar-thumb,
+.phone .content_signs::-webkit-scrollbar-thumb{
+  border-radius:5px;
+  background-color: #4c4c4e;
+ }
+
+ .phone .top{
+  position: absolute;
+ }
+
+
+
+
+
+
+
+
 
  .phone_content .title p{
     color: var(--black);
@@ -114,20 +237,16 @@ th{
 
   .content_signs{
     width: 428px;
-    height: auto;
+    height: 650px;
     display: flex;
     flex-direction:column;
     padding: 24px 24px 24px 24px;
     padding-top: 0px;
     justify-content:flex-start;
     align-items: stretch;
-
+    
   }
   .content_signs .title p{
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     color: var(--black);
     font-family: montserrat;
     font-size: 20px;
@@ -213,11 +332,11 @@ p {
 }
 
 .aroundText{
-  margin-top: 32px;
+  margin-top: 10px;
 }
 
 .discription .text{
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .result{
   display: flex;
@@ -267,8 +386,87 @@ background: #cfcece;
  .discription.text{
   margin: 15px 20px;
  }
+
+
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+ /*діє для екранів менше 1600px*/
+  @media(max-width: 1600px) {
+  
+    .info_content__weather{
+      display: none;
+     /* flex-direction: column;*/
+    }
+  
+    .info_content__exchange{
+      display: none;
+    }
+    .info_content__time{
+      display: none;
+    }
+ }
+
+
+ /*діє для екранів менше 1200px*/
+@media(max-width: 1120px) {
+  .home_content{
+    align-items: start ;
+  }
+
+
+
+
+ }
+
+
+/*діє для екранів менше 900px*/
+@media(max-width: 900px) {
+  .home_content{
+    align-items: start ;
+  }
+  .home_content.draggable {
+    top: 20px;
+    right: 150px;
+  }
+ }
+
+
+
+
+
+   /*діє для екранів менше 865px*/
+   @media (max-width: 865px) {
+	
+    .home_content{
+      align-items: start ;
+    }
+ 
+ 
+ 
+ 
+	
+	
+   }
+    /*діє якщо екран стає більший и только для цветных компьютерных экранов 768px*/
+   
+	/*діє для екранів менше 720px*/
+   @media (max-width: 720px) {
+  
+			
+
+  }
+
  
  
  

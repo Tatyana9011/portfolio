@@ -1,7 +1,6 @@
 import { getDataStorage } from "../../localStorage.js";
 import { db, db_result, tableSumisnisty } from "../../state.js";
 import goBack from "./goBack/goBack.js";
-import renderSumisnisty from "./renderSumisnisty.js";
 import showResult from "./showResult.js";
 
 const sumisnistResult = ()=>{
@@ -35,7 +34,7 @@ const sumisnistResult = ()=>{
             </div>
         </div>
     </div>
-    <div class="aroundSign">
+    <div class="aroundSign" style="margin-top: 31px;">
         <div class='imageActive'>
             <img src="./image/${elemArr1.nickName} (1).png" alt=""/>
             <div class="labelSign ">
@@ -67,7 +66,8 @@ const sumisnistResult = ()=>{
    </div>
     `
     const footer = document.querySelector('.resultFooter')
-        footer.addEventListener('click',(e)=>{
+
+    footer.addEventListener('click',(e)=>{
             const target = e.target;
             if(target.closest('.moon')){
                 showResult(elemArr0.name)

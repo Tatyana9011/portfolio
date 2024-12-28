@@ -1,6 +1,8 @@
 import {escapeHandler} from "./openModal.js"
 import {getDataStorage, removeDataStorage} from "../localStorage.js"
 import gameCars from "../game/gameCars/gameCars.js";
+import snackAnimation from "../game/newGame/snackAnimation.js";
+
 
 const closeModal = () => {
    const modalOverlay = document.querySelector('.modal-overlay'),
@@ -11,6 +13,8 @@ const closeModal = () => {
     modal.style.display = 'none';
     modalOverlay.style.display = 'none';
     document.removeEventListener('keydown', escapeHandler);
+    
+    document.body.classList.remove('no-scroll'); // Включаем прокрутку
 
     if(game==='car'){
         gameCars(false);
@@ -18,7 +22,7 @@ const closeModal = () => {
   
     }
     if(game==='snack'){
-        controller.abort()
+        snackAnimation(false)
         removeDataStorage('game')
     }
 };

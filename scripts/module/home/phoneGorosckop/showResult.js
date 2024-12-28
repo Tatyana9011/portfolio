@@ -1,7 +1,7 @@
 import { removeDataStorage } from '../../localStorage.js';
 import {db} from '../../state.js';
 import goBack from './goBack/goBack.js';
-
+import scrollTopII from '../../scrollTopII.js';
 import renderSumisnisty from './renderSumisnisty.js';
 
 const showResult=(title)=>{
@@ -64,11 +64,11 @@ const showResult=(title)=>{
         </div>
     </div>
     `
- 
+    
     goBack(elemArr.name,'signChange')
-
    const footerHeart = document.querySelector('.heart')
    
     footerHeart.addEventListener('click',renderSumisnisty);
+    scrollTopII('.content_signs')
 }
 export default showResult;

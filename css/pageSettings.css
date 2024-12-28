@@ -49,12 +49,10 @@
   --filters-wrapper-opacity: 1;
 }
 
+
 .settings_content {
   width: 1200px;
   height: 25em;
-}
-
-.settings_content {
   display: flex;
   flex-direction: column;
   justify-content: center;

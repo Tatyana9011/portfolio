@@ -20,7 +20,6 @@ input{
     margin-right: 20px;
 }
 input, select, label{
-  
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;

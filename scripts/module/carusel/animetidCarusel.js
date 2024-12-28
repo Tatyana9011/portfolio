@@ -1,10 +1,6 @@
 const animetidCarusel =()=>{
     console.log('animetidCarusel: ');
 
-   // Author: Hoang Tran (https://www.facebook.com/profile.php?id=100004848287494)
-// Github verson (1 file .html): https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
-
-
 // You can change global letiables here:
 let radius = 240; // how big of the radius
 let autoRotate = true; // auto rotate or not
@@ -12,35 +8,22 @@ let rotateSpeed = -60; // unit: seconds/360 degrees
 let imgWidth = 120; // width of images (unit: px)
 let imgHeight = 170; // height of images (unit: px)
 
-
-/*
-     NOTE:
-       + imgWidth, imgHeight will work for video
-       + if imgWidth, imgHeight too small, play/pause button in <video> will be hidden
-       + Music link are taken from: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HauMaster&playlist=1&song=1&background=28
-       + Custom from code in tiktok video  https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
-*/
-
-
-// ===================== start =======================
 // animation start after 1000 miliseconds
 setTimeout(init, 1000);
+//щоб не створювати два слухателя собітий убираем цей елемент і фукнцію для неї в home page
+const draggable = document.querySelector('#draggable');
+if(draggable)draggable.remove();
 
-const odrag = document.getElementById('drag-container');
+const odrag = document.getElementById('drag-container');//драг контейнер (его не видно наєкране но он влияем на положение картинок)
 const ospin = document.getElementById('spin-container');
 const aImg = ospin.getElementsByTagName('img');
-const aVid = ospin.getElementsByTagName('video');
-let aEle = [...aImg, ...aVid]; // combine 2 arrays
+let aEle = [...aImg]; // combine 2 arrays
 
 // Size of images
 ospin.style.width = imgWidth + "px";
 ospin.style.height = imgHeight + "px";
 
-// Size of ground - depend on radius
-const ground = document.getElementById('ground');
-ground.style.width = radius * 3 + "px";
-ground.style.height = radius * 3 + "px";
-
+//встановлюємо стилі для кожної картинки
 function init(delayTime) {
   for (let i = 0; i < aEle.length; i++) {
     aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
@@ -49,6 +32,7 @@ function init(delayTime) {
   }
 }
 
+//трансформируем драг контейнер
 function applyTranform(obj) {
   // Constrain the angle of camera (between 0 and 180)
   if(tY > 180) tY = 180;
@@ -74,13 +58,13 @@ if (autoRotate) {
 }
 
 // setup events
-document.onpointerdown = function (e) {
+document.onpointerdown = function (e) { //натиснули клавішу миші
   clearInterval(odrag.timer);
   e = e || window.event;
   let sX = e.clientX,
       sY = e.clientY;
 
-  this.onpointermove = function (e) {
+  this.onpointermove = function (e) { //рухаемо мишкою з натисненою клавішею миші
     e = e || window.event;
     let nX = e.clientX,
         nY = e.clientY;
@@ -93,7 +77,7 @@ document.onpointerdown = function (e) {
     sY = nY;
   };
 
-  this.onpointerup = function (e) {
+  this.onpointerup = function (e) {  //отпустили клавішу миші
     odrag.timer = setInterval(function () {
       desX *= 0.95;
       desY *= 0.95;
@@ -112,13 +96,7 @@ document.onpointerdown = function (e) {
   return false;
 };
 
-document.onmousewheel = function(e) {
-  e = e || window.event;
-  let d = e.wheelDelta / 20 || -e.detail;
-  radius += d;
-  init(1);
-};
-                                                                                                    
+                                           
 }
 
 export default animetidCarusel;

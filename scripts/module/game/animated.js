@@ -5,11 +5,12 @@ const animated = ()=>{
     let universe = document.getElementById("universe");
     let w = window;
     let d = document;
-    let e = d.documentElement;
-
+    let e = d.documentElement;//всі елементи в документі
+ 
     let width = w.innerWidth || e.clientWidth;
     let height = w.innerHeight || e.clientHeight;
-    
+    console.log('height: ', height);
+
     for (let i = 0; i < starCount; ++i) {
       let ypos = Math.round(Math.random() * height);
       let star = document.createElement("div");

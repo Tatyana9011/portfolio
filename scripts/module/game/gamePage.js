@@ -14,14 +14,17 @@ const gamePage = ()=>{
         let target = event.target;
         
         if(target.closest('#car')){
+
             openModal()
             gameCars(true)
         }
         if(target.closest('#boardColor')){
+
             openModal()
             boardColor()
         }
         if(target.closest('#circle')){
+
             openModal()
             circleColorful()
         }

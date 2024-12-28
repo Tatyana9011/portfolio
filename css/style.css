@@ -10,18 +10,28 @@
     font-family:  "Roboto Serif", serif;
 }
 
+html {
+    scroll-behavior: smooth; /* Гладкая прокрутка */
+}
+
 body {
     min-height: 100vh;
     flex-direction: row;
     align-items: center;
     background: var(--clr);
-    color: var(--color1)
+    color: var(--color1);
+    overflow-x: hidden;
 }
+
+body.no-scroll {
+  overflow: hidden; /* Отключает прокрутку */
+}
+
 .sidebar{
     position: absolute;
     z-index: 1000;
     width: 80px;
-    height: 100vh;
+    height: 100em;
     background: #fff;
     transition: 0.5s;
     padding-left: 10px;
@@ -33,7 +43,7 @@ body {
 
 .sidebar ul{
     position: relative;
-    height: 100vh;
+    height: 100em;
 }
 .sidebar ul li{
     position: relative;
@@ -98,6 +108,17 @@ border-bottom-left-radius: 50px;
     color: #333;
     transition: 0.5s;
 }
+.sidebar ul li a .icon.one,
+.sidebar ul li a .icon.two{
+    display: none;
+}
+
+.sidebar ul li a .icon.one.active,
+.sidebar ul li a .icon.two.active{
+    display: flex;
+}
+
+
 .sidebar ul li a .text{
     position: relative;
     display: flex;
@@ -110,6 +131,7 @@ border-bottom-left-radius: 50px;
     letter-spacing: 0.05em;
     transition: 0.5s;
 }
+
 
 .sidebar ul li a:hover .icon,
 .sidebar ul li a:hover .text{
@@ -141,19 +163,34 @@ border-bottom-left-radius: 50px;
     color: var(--bg);
 }
 
+.draggable {
+    line-height: 150px;
+    top: 50px;
+    right: 150px;
+    cursor: grab;
+    user-select: none;
+}
+
 .menuToggle{
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: #31a4ff;
+    opacity: 0.7;
+    width: 70px;
+    height: 70px;
     z-index: 1000;
     cursor: pointer;
+    border-radius:32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f44336;
+    box-shadow: 0px 0px 0px 4px rgba(92, 103, 255, 0.3);
+    transition: box-shadow 0.2s ease-in;
 }
+.menuToggle:hover, .menuToggle:focus {
+    opacity: 0.9;
+    box-shadow: 0px 0px 0px 8px rgba(92,103,255,0.3);
+  }
+
 .menuToggle::before{
     content: '';
     position: absolute;
@@ -182,14 +219,6 @@ border-bottom-left-radius: 50px;
     box-shadow: 0 0 0 #fff;
 }
 
-.content{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--color1);
-}
 .navBar{
     display: flex;
     flex-direction:row;
@@ -197,11 +226,15 @@ border-bottom-left-radius: 50px;
     align-items: center;
     margin-top: 15px;
 }
+
 .page{
     padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    position: relative;
 }
-
-
 .modal {
     display: none;
     width: 460px;
@@ -230,7 +263,6 @@ border-bottom-left-radius: 50px;
     width: 500px;
     max-width: 100%;
     height: 650px;
-    background: #fff;
   }
   .modal-close {
     width: 25px;
@@ -299,6 +331,16 @@ border-bottom-left-radius: 50px;
     box-shadow: 9px 9px 18px rgba(136, 137, 136, 0.5), -9px -9px 18px #505562;
     color: #68696b ;
   }
+
+ /*діє для екранів менше 1600px*/ 
+  @media (max-width: 1600px) {
+   .draggable {
+        top: 30px;
+        right: 100px;
+    }
+    
+   }
+/*діє для екранів менше 1200px*/
    @media (max-width: 1200px) {
    .close {
       top: 15%;
@@ -311,28 +353,36 @@ border-bottom-left-radius: 50px;
         margin-top: 15px;
         margin-left: 0;
     }
+    .draggable {
+        top: 20px;
+        right: 75px;
+      }
   }
+  /*діє для екранів менше 900px*/
   @media (max-width: 900px) {
-   .close {
+  .close {
       top: 6%;
       right: 15%;
     }
-    
-    
-    
+    .draggable {
+        top: 20px;
+        right: 20px;
+      }
   }
-  
+  /*діє для екранів менше 865px*/
   @media (max-width: 865px) {
    .close {
       top: 6%;
       right: 10%;
     }
   }
+   /*діє якщо екран стає більший 768px*/
   @media only screen and (min-width: 768px) {
     .modal {
       padding: 55px 40px 40px;
     }
    }
+   /*діє для екранів менше 720px*/
   @media (max-width: 720px) {
   .close {
       top: 1%;

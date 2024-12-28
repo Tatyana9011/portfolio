@@ -1,4 +1,4 @@
-import animation from "./SnackAnimation.js";
+import animation from "./snackAnimation.js";
 import {saveDataJSON, removeDataStorage} from "../../localStorage.js"
 
 const newGame = ()=>{
@@ -7,9 +7,9 @@ const newGame = ()=>{
 
     const modalContent = document.querySelector('#modal_content');
         modalContent.innerHTML = ` <div class="screen">
-        <button class="startGame_btn">Start Game</button> 
+        <div class="startGame_btn">Start Game</div> 
         <div class= "text_info">
-            <p>Для гри використовуйте клавіші на клавіатурі:</p>
+            <p class="textGame">Для гри використовуйте клавіші на клавіатурі:</p>
             <div class="all_button">
                 <button class="keyLeft"><ion-icon name="arrow-back-outline"></ion-icon></button>
                 <div class="groupUpDown">
@@ -21,7 +21,7 @@ const newGame = ()=>{
                 <button class="keyRight"><ion-icon name="arrow-forward-outline"></ion-icon></button>
             </div>
         </div>
-        <canvas id="myCanvas" width="460" height="460"></canvas>
+        <canvas id="canvasGame" width="460" height="460"></canvas>
         </div>`
         const startGame = document.querySelector('.startGame_btn');
        
