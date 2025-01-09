@@ -9,7 +9,6 @@ const animated = ()=>{
  
     let width = w.innerWidth || e.clientWidth;
     let height = w.innerHeight || e.clientHeight;
-    console.log('height: ', height);
 
     for (let i = 0; i < starCount; ++i) {
       let ypos = Math.round(Math.random() * height);

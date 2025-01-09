@@ -2,6 +2,7 @@
 import keydownET from "./canvas/keydownET.js";
 
 const removerEventListener=(type, func)=>{
+    console.log('type: ', type);
     console.log('type, func: ' );
     console.log('removerEventListener: ');
 

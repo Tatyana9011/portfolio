@@ -1,38 +1,33 @@
 const animetidCarusel =()=>{
     console.log('animetidCarusel: ');
-
+    document.onpointerup=null; //при заходе а страницу убираем слушатель что би не було дублювання
+    
 // You can change global letiables here:
 let radius = 240; // how big of the radius
 let autoRotate = true; // auto rotate or not
 let rotateSpeed = -60; // unit: seconds/360 degrees
-let imgWidth = 120; // width of images (unit: px)
-let imgHeight = 170; // height of images (unit: px)
+
 
 // animation start after 1000 miliseconds
 setTimeout(init, 1000);
-//щоб не створювати два слухателя собітий убираем цей елемент і фукнцію для неї в home page
-const draggable = document.querySelector('#draggable');
-if(draggable)draggable.remove();
 
 const odrag = document.getElementById('drag-container');//драг контейнер (его не видно наєкране но он влияем на положение картинок)
 const ospin = document.getElementById('spin-container');
 const aImg = ospin.getElementsByTagName('img');
+const curusel = document.querySelector('.anime_checkbox');
+
 let aEle = [...aImg]; // combine 2 arrays
 
-// Size of images
-ospin.style.width = imgWidth + "px";
-ospin.style.height = imgHeight + "px";
-
-//встановлюємо стилі для кожної картинки
+//встановлюємо стилі для кожної картинки вони оновлюються кожну секунду свойство transition делает єто плавно 
 function init(delayTime) {
   for (let i = 0; i < aEle.length; i++) {
-    aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
-    aEle[i].style.transition = "transform 1s";
-    aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+    aEle[i].style.transform += "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+    aEle[i].style.transition += "transform 1s";
+    aEle[i].style.transitionDelay += delayTime || (aEle.length - i) / 4 + "s";
   }
 }
 
-//трансформируем драг контейнер
+//трансформируем драг контейнер трансформируется при движении миши с зажатой левой клавишей 
 function applyTranform(obj) {
   // Constrain the angle of camera (between 0 and 180)
   if(tY > 180) tY = 180;
@@ -58,7 +53,7 @@ if (autoRotate) {
 }
 
 // setup events
-document.onpointerdown = function (e) { //натиснули клавішу миші
+curusel.onpointerdown = function (e) { //натиснули клавішу миші
   clearInterval(odrag.timer);
   e = e || window.event;
   let sX = e.clientX,
@@ -78,6 +73,7 @@ document.onpointerdown = function (e) { //натиснули клавішу ми
   };
 
   this.onpointerup = function (e) {  //отпустили клавішу миші
+
     odrag.timer = setInterval(function () {
       desX *= 0.95;
       desY *= 0.95;
@@ -90,10 +86,16 @@ document.onpointerdown = function (e) { //натиснули клавішу ми
         playSpin(true);
       }
     }, 17);
-    this.onpointermove = this.onpointerup = null;
+ 
   };
 
+  document.onpointerup = function (e) {
+    curusel.onpointermove = null;
+    curusel.onpointerup = null;
+  }
+
   return false;
+
 };
 
                                            

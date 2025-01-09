@@ -1,6 +1,14 @@
 import { getDataStorage } from "./localStorage.js";
 
+export const keys = {
+  ArrowUp: false,
+  ArrowDown: false,
+  ArrowRight: false,
+  ArrowLeft: false
+};
+
 export const setting = {
+    startSpeed:0,
     start: false,
     score: 0,
     speed: 3,

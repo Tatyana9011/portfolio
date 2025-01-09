@@ -1,89 +1,60 @@
-import {saveDataJSON, removeDataStorage} from "../../localStorage.js"
+import {saveDataJSON} from "../../localStorage.js"
 import stopGame from "./stopGame.js";
-import { setting, music } from "../../state.js";
-import removerEventListener from "../../removerEventListener.js";
+import { setting, music, keys } from "../../state.js";
+import startRun from "./startRun.js";
+import stopRun from "./stopRun.js";
+import rendalModalCart from "./rendalModalCart.js";
+import createElement from "./creatElement.js";
+import changeLevel from "./changeLevel.js";
 
 const gameCars =(bool)=>{
   console.log('gameCars: ');
+ if(bool){
+    saveDataJSON('game','car')
+    rendalModalCart();
 
-
-  const keys = {
-    ArrowUp: false,
-    ArrowDown: false,
-    ArrowRight: false,
-    ArrowLeft: false
-  };
-
-  const startRun = event => {
-
-    event.preventDefault();
-    keys[event.key] = true;
-
-    const modalOverlay = document.querySelector('.modal-overlay'); 
-    if(modalOverlay.style.display === 'none'){
-      removerEventListener('keydown', startRun);
-    }
-
-  };
-    
-  const stopRun = event => {
-    event.preventDefault();
-    keys[event.key] = false;
-
-    const modalOverlay = document.querySelector('.modal-overlay'); 
-
-    if(modalOverlay.style.display === 'none'){
-      removerEventListener('keyup', stopRun);
-    };
-  }
-   
-if(bool){
-  saveDataJSON('game','car')
-
-  const modalContent = document.querySelector('#modal_content');
-  modalContent.innerHTML = `
-  <div class="score"></div>
-  <div class="game_modal">
-    <div class="start"> 
-      Начать игру! <br>
-      <button>Легкий</button>
-      <button>Средний</button>
-      <button>Сложный</button>
-    </div>
-    <div class="gameArea"></div>
-  </div>`
-
-const MAX_ENEMY = 7;
 const HEIGHT_ELEM = 100;
 const score = document.querySelector('.score'),
   gameArea = document.querySelector('.gameArea'),
-  car = document.createElement('div'),
-  startBtn = document.querySelectorAll('.start button');
+  car = document.createElement('div'),//створюємо елемент для машинки
+  startBtn = document.querySelectorAll('.start button'),
+  modalContent = document.querySelector('#modal_content'),
+  gameModal = document.querySelector('.game_modal');
   
   music.volume = 0.05;
 
   car.classList.add('car');
   
-  let startSpeed = 0;
-  
+ 
 function getQuantityElements(heightElement) {
   //сколько елементов (количество машин) поместется на странице
   return (gameArea.offsetHeight / heightElement) + 1;
 }
-const getRandomEneme = (max) => {
-  return Math.floor((Math.random() * max) + 1);
-};
 
 //имитация движения автомобиля
 const moveRoad = () => {
   let lines = document.querySelectorAll('.line');
-
   lines.forEach(line => {
     line.y += setting.speed;
     line.style.top = line.y + 'px';
+
     //если высота больше чем высота страници
     if (line.y >= gameArea.offsetHeight) {
       line.y = -HEIGHT_ELEM;
+    }
+
+  });
+};
+const moveTree = () => {
+  let trees = document.querySelectorAll('.tree');
+  
+  trees.forEach((tree,i) => {
+    tree.y += setting.speed;
+    tree.style.top = tree.y + 'px';
+
+    //если высота больше чем высота страници
+    if (tree.y >= gameArea.offsetHeight) {
+      tree.y = -HEIGHT_ELEM;  //ховаємо елемент убіраючи його висоту
     }
   });
 };
@@ -111,8 +82,8 @@ const moveEnemy = () => {
       score.innerHTML = `УПС АВАРИЯ!`;
     }
   
-    enemy.y += setting.speed / 2;
-    enemy.style.top = enemy.y + 'px';
+    enemy.y += setting.speed / 2; //скорость появления машин
+    enemy.style.top = enemy.y + 'px';//увеличевается растояние от верха
     //если высота больше чем высота страници
     if (enemy.y >= gameArea.offsetHeight) {
       enemy.y = -HEIGHT_ELEM * setting.traffic;
@@ -129,9 +100,10 @@ function playGame() {
     ${setting.record ? `<p>Рекорд: ${setting.record}</p>` : ''}
     `;
   
-    setting.speed = startSpeed + Math.floor(setting.score / 5000);
-  
-    moveRoad();
+    setting.speed = setting.startSpeed + Math.floor(setting.score / 5000);
+
+    moveTree();//добавляемо обочіну як при русі авто
+    moveRoad(); //добавляемо лінії на дорозі для враження що авто рухаеться
     moveEnemy();//определяем параметри авто при столкновении 
     
     if (keys.ArrowLeft && setting.x > 0) {
@@ -154,59 +126,33 @@ function playGame() {
   }
 }
   
-const changeLevel = event => {
-  let target = event.target;
-  if (target.textContent === 'Легкий') {
-    startSpeed = 3;
-    setting.traffic = 3;
-  }
-  if (target.textContent === 'Средний') {
-    startSpeed = 6;
-    setting.traffic = 3;
-  }
-  if (target.textContent === 'Сложный') {
-    startSpeed = 6;
-    setting.traffic = 2;
-  }
-};
-  
 const startGame = (event) => {
+//якщо гравець перезапускає гру - убираемо обочіну від кущів
+  const trees = gameModal.querySelectorAll('.tree');
+  trees.forEach(tree => tree.remove());
+
   startBtn.forEach(btn => {
     btn.disabled = true;
     btn.style.color="#c3c1c1";
     btn.style.cursor = "default";
   });
   changeLevel(event);
-  //document.body.append(music);
+  
   music.play();
+  //визначаємо висоту дороги
   gameArea.style.minHeight=(Math.floor((modalContent.clientHeight - HEIGHT_ELEM) / 100)*100)+'px';
-
+    
   gameArea.innerHTML = '';
-  //создаем линии
+
+  //создаем линии и обочину
   for (let i = 0; i < getQuantityElements(HEIGHT_ELEM); i++) {
-    const line = document.createElement('div');
-    line.classList.add('line');
-    line.style.top = (i * HEIGHT_ELEM) + 'px';
-    line.style.height = (HEIGHT_ELEM / 2) + 'px';
-    line.y = i * HEIGHT_ELEM;
-    gameArea.append(line);
+    createElement('line', gameArea,i, HEIGHT_ELEM)
+    createElement('tree', gameModal,i, HEIGHT_ELEM-20) //создаем кустики на обочине
   }
+
   //создаем машинки
   for (let i = 0; i < getQuantityElements(HEIGHT_ELEM * setting.traffic); i++) {
-    //создаем другие автомобили
-    const enemy = document.createElement('div');
-    enemy.classList.add('enemy');
-    //100 это высота автомобиля
-    enemy.y = -HEIGHT_ELEM * setting.traffic * (i + 1);
-    enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
-    enemy.style.top = enemy.y + 'px';
-    enemy.style.background = `
-    transparent
-     url("../../../../image/enemy${getRandomEneme(MAX_ENEMY)}.png") 
-     center / cover
-     no-repeat
-     `;
-    gameArea.append(enemy);
+    createElement ('enemy', gameArea, i, HEIGHT_ELEM)
   }
   
   setting.score = 0;
@@ -218,13 +164,14 @@ const startGame = (event) => {
   //записываем координати машины в обьект setting
   setting.x = car.offsetLeft;
   setting.y = car.offsetTop;
+  removeEventListener('click', startGame)
   requestAnimationFrame(playGame);
 };
   
-startBtn.forEach(start => start.addEventListener('click', startGame));
+  startBtn.forEach(start => start.addEventListener('click', startGame));
 
-document.addEventListener('keydown', startRun);
-document.addEventListener('keyup', stopRun);
+  document.addEventListener('keydown', startRun);
+  document.addEventListener('keyup', stopRun);
 
 }else{
 

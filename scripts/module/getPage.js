@@ -4,8 +4,8 @@ import { saveDataJSON, removeDataStorage,getDataStorage } from "./localStorage.j
 import gamePage from "./game/gamePage.js";
 import loaderPage from "./loader/loaderPage.js";
 import settingsPage from "./settingsPage/settingsPage.js";
-import animetidCarusel from "./carusel/animetidCarusel.js";
 import orderPage from "./orderPage/orderPage.js";
+import pageCurusel from "./carusel/pageCurusel.js";
 
 const getPage = (str='Home')=>{ //откриваем необходимую страницу в соответствии с текстом на линке
     console.log('getPage: ', str);
@@ -53,7 +53,7 @@ const getPage = (str='Home')=>{ //откриваем необходимую ст
             gamePage()
         }else if(str==="Carusel"){
             curusel.setAttribute('style', 'displey:flex');
-            animetidCarusel();
+            pageCurusel();
         }
         saveDataJSON("page",str)
 }

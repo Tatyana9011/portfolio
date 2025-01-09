@@ -7,7 +7,7 @@ const $$ = (s, o = document) => o.querySelectorAll(s);
 $$('.button').forEach(button => {
 //progress  ye;yj e,bhfnm
     let count = { number: 0 },
-        line =  $('.line',button),
+        line =  $('.line1',button),
         iconDiv = $('.icon > div', button),
         arrow = $('.icon .arrow', button),
         countElem = $('span', button),

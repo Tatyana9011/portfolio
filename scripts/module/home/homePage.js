@@ -3,7 +3,7 @@ import {exchangeAPI} from '../api/api.js'
 import { errorFatch } from '../api/errorFatch.js';
 import timeNow from './timeNow.js';
 import gorosckop from './phoneGorosckop/gorosckop.js';
-import toggleDrag from '../toggleDrag.js';
+import toggleDrag from './toggleDrag.js';
 
 
 const homePage = ()=>{
@@ -21,6 +21,8 @@ const homePage = ()=>{
         })
     }
 
+
+    
     //exchangeAPI()
    // .then(res => exchangeData(res.json(),res.status))
    // .catch(e => error(e));

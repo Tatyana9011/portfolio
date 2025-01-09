@@ -118,7 +118,7 @@
     margin: -20px 0 0 -12px;
 }
 .wrapper_button .button .icon .line1 {
-    width: 2px;
+    width: 4px;
     height: 37px;
     stroke: var(--active);
     position: absolute;

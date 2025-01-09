@@ -115,11 +115,15 @@
   }
 
 
-
-
-
-
-
+  .section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+}
 
 
 
@@ -453,7 +457,12 @@ background-color: #f6f6f8;
      
   
   
-  
+    @media (max-width: 865px) {
+      .content_louder{
+        margin-left: 90px;
+      }
+
+    }
   
   
   

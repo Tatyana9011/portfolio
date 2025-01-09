@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded",()=>{
       let pageHash = target.closest('a').querySelector('.text').textContent
       
         if(pageHash!=='Home'&&pageHash!=='Hid sidebar'){
-          menuToggle.style.display = 'none';
+          menuToggle.style.display = 'none'; 
+        }
+        if(pageHash==='Home'){
+          menuToggle.style.display = 'flex';
         }
         if(pageHash==='Hid sidebar'){
             sidebar.classList.toggle('active');
@@ -47,6 +50,11 @@ document.addEventListener("DOMContentLoaded",()=>{
               closeModal()
           }
         }
+    })
+
+    window.addEventListener('scroll',function (e){
+      document.body.style.cssText += `--scrollTopY:${this.scrollY}px`;   //--scrollTop создаем эту переменную и ее видно во всех цсс файлах
+    
     })
     
      //откріваем и закріваем сайтбар меню

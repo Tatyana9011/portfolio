@@ -21,6 +21,7 @@ body {
     background: var(--clr);
     color: var(--color1);
     overflow-x: hidden;
+    line-height: 1.55;
 }
 
 body.no-scroll {
@@ -28,14 +29,15 @@ body.no-scroll {
 }
 
 .sidebar{
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     width: 80px;
-    height: 100em;
+    height: 100%;
     background: #fff;
     transition: 0.5s;
     padding-left: 10px;
     overflow: hidden;
+    user-select: none;
 }
 .sidebar.active{
     width: 300px;
@@ -43,12 +45,13 @@ body.no-scroll {
 
 .sidebar ul{
     position: relative;
-    height: 100em;
+    height: 100%;
 }
 .sidebar ul li{
     position: relative;
     list-style: none;
 }
+
 .sidebar ul li.active{
 background: var(--clr);
 border-top-left-radius: 50px;
@@ -77,8 +80,7 @@ border-bottom-left-radius: 50px;
     background: transparent;
 }
 .sidebar ul li.logo{
-   margin-bottom: 50px;
-   
+    margin-bottom: 50px;
 }
 .sidebar ul li .logo .icon{
     font-size: 2em;
@@ -332,7 +334,7 @@ border-bottom-left-radius: 50px;
     color: #68696b ;
   }
 
- /*діє для екранів менше 1600px*/ 
+/*діє для екранів менше 1600px*/ 
   @media (max-width: 1600px) {
    .draggable {
         top: 30px;
@@ -387,27 +389,8 @@ border-bottom-left-radius: 50px;
   .close {
       top: 1%;
       right: 1%;
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
