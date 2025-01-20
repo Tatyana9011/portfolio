@@ -1,4 +1,4 @@
-import animation from "./snackAnimation.js";
+import snackAnimation from "./snackAnimation.js";
 import {saveDataJSON, removeDataStorage} from "../../localStorage.js"
 
 const newGame = ()=>{
@@ -23,11 +23,11 @@ const newGame = ()=>{
         </div>
         <canvas id="canvasGame" width="460" height="460"></canvas>
         </div>`
-        const startGame = document.querySelector('.startGame_btn');
-       
-        startGame.addEventListener('click', animation.bind(event,true));
 
-                     
+        const startGameBtn = document.querySelector('.startGame_btn');
+        startGameBtn.addEventListener('click', snackAnimation);
+
+                   
 }                                                                                                                 
 export default newGame;
 

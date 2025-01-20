@@ -1,9 +1,9 @@
 
-.game .page{
+.page .game {
   width: 100vh;
 }
 
-.game{
+.page .game{
   display: flex;
   justify-content: space-between;
   margin-bottom: 1em;
@@ -11,12 +11,12 @@
   height: 2000px;
 } 
 
-.game h2 {
+.page .game h2 {
   display: flex;
   justify-content: center;
   align-items:center;
 }
-.game p {
+.page .game p {
   display: flex;
   justify-content: center;
   align-items:center;
@@ -53,7 +53,8 @@
 }
 
 .l_container {
-  position: absolute;
+  position: fixed;
+  top:10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -61,7 +62,8 @@
   width: 100%;
   max-width: 1200px;
   padding: 30px;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  z-index:30;
 }
 
 .b_game_card {
@@ -265,7 +267,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   transition: margin 0.5s ease-out;
   background: linear-gradient(90deg, #29323C 0%, #485563 100%);
@@ -274,7 +276,7 @@ a:hover {
   margin-bottom: 30px;
 }
 .screen.up {
-  margin-top: -100vh;
+  margin-top: -100%;
 }
 
 .time-list {

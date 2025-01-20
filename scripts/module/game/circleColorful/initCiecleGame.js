@@ -11,6 +11,7 @@ const initCiecleGame =()=>{
     timeList.addEventListener('click', event => {
         if (event.target.classList.contains('time-btn')) {
           time = parseInt(event.target.getAttribute('data-time'));
+          screen[1].style.display = 'flex';
           screen[1].classList.add('up');
           startGame();
           return time

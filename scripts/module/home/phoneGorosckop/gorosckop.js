@@ -40,10 +40,6 @@ const gorosckop = ()=>{
         })
 
     
-    
-    
-    
-
     if(dataSigns){
         checkbox.checked=true
         contentSigns.style.display = 'block';

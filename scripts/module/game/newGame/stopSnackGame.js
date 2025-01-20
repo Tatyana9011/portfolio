@@ -1,10 +1,13 @@
-import removeEventListener from'../../removerEventListener.js'
-
+import snackAnimation from './snackAnimation.js';
 
 const stopSnackGame = (game)=>{
-    console.log('stopSnackGame: ');
 
-    const modalOverlay = document.querySelector('.modal-overlay');
+const startGameBtn = document.querySelector('.startGame_btn');
+
+    startGameBtn?startGameBtn.addEventListener('click', snackAnimation):false;
+    startGameBtn?startGameBtn.style.cssText='opacity:1; cursor:pointer;':false;
+
+const modalOverlay = document.querySelector('.modal-overlay');
     
     clearInterval(game);
 
@@ -12,6 +15,5 @@ const stopSnackGame = (game)=>{
         alert('Game Over!');
     }
          return;
-    
 }
 export default stopSnackGame;

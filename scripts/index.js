@@ -2,7 +2,7 @@ import  activeLink from "./module/activeLink.js";
 import { getDataStorage } from "./module/localStorage.js";
 import getPage from "./module/getPage.js";
 import closeModal from "./module/modal/closeModal.js";
-
+import changeActiveSidebar from "./changeActiveSidebar.js";
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -19,24 +19,27 @@ document.addEventListener("DOMContentLoaded",()=>{
         activeLink(dataPage); //активуємо лінку в меню
     }
   
-    sidebar.addEventListener("click", (event) => {
+    document.addEventListener("click", (event) => {
         
-      const target = event.target
-      let pageHash = target.closest('a').querySelector('.text').textContent
-      
-        if(pageHash!=='Home'&&pageHash!=='Hid sidebar'){
+      const target = event.target;
+      let targetLink = target.closest('a');
+      let pageHash
+
+      if(targetLink)pageHash = targetLink.querySelector('.text').textContent;
+
+        if(!target.closest('.sidebar')&!target.closest('.menuToggle')){
+          changeActiveSidebar(false);
+        }
+        if(dataPage!=='Home'&&dataPage!=='Hid sidebar'){
           menuToggle.style.display = 'none'; 
         }
         if(pageHash==='Home'){
           menuToggle.style.display = 'flex';
         }
         if(pageHash==='Hid sidebar'){
-            sidebar.classList.toggle('active');
-            const elemA = target.closest('a')
-            const elemArow = elemA.querySelector('.one')
-            const elemArow2 = elemA.querySelector('.two');
-            elemArow.classList.toggle('active');
-            elemArow2.classList.toggle('active');
+
+          changeActiveSidebar(true)
+       
         }
       })
 

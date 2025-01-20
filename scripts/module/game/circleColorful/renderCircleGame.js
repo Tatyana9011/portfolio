@@ -27,7 +27,7 @@ const renderCircleGame =()=>{
       </li>
     </ul>
   </div>
-  <div class="screen">
+  <div class="screen" style="display: none;">
     <h3>Осталось <span id="time">00:00</span></h3>
     <div class="board" id="board"></div>
   </div>`

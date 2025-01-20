@@ -5,7 +5,7 @@ import blurF from './blurF.js';
 import addFilterColor from './addFilterColor.js';
 import rainbow from './rainbow.js';
 import setCanvasWidthAndHeight from './setCanvasWidthAndHeight.js';
-
+import scrollCanvas from './scrollCanvas.js';
 //import drowLine from './drowLine.js';
 const canvas = ()=>{
     console.log('canvas: ');
@@ -36,7 +36,7 @@ let image=null,
 
 setCanvasWidthAndHeight(user[0], user[1])
 
-window.addEventListener('resize', (e) => {
+window.addEventListener('resize', (e) => {//визначаємо зміни  вікна
   user = userWidth(param);
   setCanvasWidthAndHeight(user[0], user[1])
   //drowLine('3',param);
@@ -136,7 +136,6 @@ page.addEventListener('click', (event) =>{
         return;
      }
       if(target.matches('#rainbow') ){  //если нажади на кнопку радуга
-        
         target.blur()
         rainbow()
 
@@ -145,10 +144,13 @@ page.addEventListener('click', (event) =>{
         labelCreat.classList.add('disabletLable');
         labelCreat.classList.remove('addImg');
 
+        scrollCanvas()
+       
       }
       if(target.matches('#lang')&&image!==null){  
         if(target.value!==""){
           addFilter(target.value); //юзер вибирает цвер фильтра
+          scrollCanvas()
         }
       } 
       if(target.matches('#clear')&&getCanvas){ //очистить два поля кенвоз
@@ -217,7 +219,8 @@ function createComposite() {
   for (var pixel of fgImage.values()) {
     var x = pixel.getX();
     var y = pixel.getY();
-    if (pixel.getGreen() > greenThreshold) {    // вместо 240 можно использовать pixel.getRed()+ pixel.getBlue()   так исчезнит ободок
+    if (pixel.getGreen() > greenThreshold) {    // вместо 240 можно использовать pixel.getRed()+ pixel.getBlue()   
+                                                 //так исчезнит ободок
 	
       //pixel is green, use background
       var bgPixel = bgImage.getPixel(x,y);

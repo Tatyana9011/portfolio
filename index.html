@@ -10,16 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/loader.css">
 <link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/pageImage.css">
 <link rel="stylesheet" href="css/pageHome.css">
 <link rel="stylesheet" href="css/pageGame.css">
 <link rel="stylesheet" href="css/pageOrder.css">
 <link rel="stylesheet" href="css/pageCurusel.css">
 <link rel="stylesheet" href="css/pageSettings.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
 <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700" />
 
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script  defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script  defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script  defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
@@ -34,7 +40,7 @@
 	<div class="menuToggle draggable" id="draggable" style="display: none;"> </div>
 	<div class="sidebar">
 		<ul>
-			<li class="logo" style="--bg:#333;">
+			<li class="sidebar__logo" style="--bg:#333;">
 				<a href="#Carusel">
 					<div class="icon"><ion-icon name="logo-apple"></ion-icon>
 					</div>
@@ -49,7 +55,7 @@
 						<div class="text">Hid sidebar</div>
 					</a>
 				</li>
-				<li style="--bg:#f44336;" class="link active">
+				<li style="--bg:#f57c00;" class="link active">
 					<a href="#Home">
 						<div class="icon"><ion-icon name="home-outline"></ion-icon></div>
 						<div class="text">Home</div>
@@ -95,13 +101,6 @@
 			<div class="info_content__time">
 				<div class="time"> 	
 					<table id="tableTime" class="display">
-						<thead>
-							<tr>
-								<th class="table_head">Время</th>
-								<th class="table_head">дд/мм/гггг</th>
-								<th class="table_head">д.н.</th>
-							</tr>
-						</thead>
 						<tbody>
 							<tr>
 								<td>Row 1 </td>
@@ -113,71 +112,8 @@
 					
 				</div>
 			</div>
-			<div class="info_content__weather">			
-			<div class="weather"> 	
-				<table id="tableWewther" class="display">
-					<thead>
-						<caption class="table_title">Погода</caption>
-						<tr>
-							<th class="table_head"><i><u>Пн</u></i></th>
-							<th class="table_head">Вт</th>
-							<th class="table_head">Ср</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Row 1 </td>
-							<td>Row 1 Data 2</td>
-							<td>Row 1 Data 3</td>
-						</tr>
-						<tr>
-							<td>Row 2 </td>
-							<td>Row 2 Data 2</td>
-							<td>Row 2 Data 3</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			</div>
-			<div class="info_content__exchange">
-			<div class="exchange">   
-				<table id="tableExchange" class="display">
-					<thead>
-						<caption class="table_title">Курс валют</caption>
-						<tr>
-							<th>Продаж</th>
-							<th>Купівля</th>
-							<th>Курс</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="table_body">USD</td>
-							<td class="table_body" >UAH</td>
-							<td class="table_body">38.98</td>
-						</tr>
-						<tr>
-							<td >UAH</td>
-							<td >USD</td>
-							<td >38.60</td>
-						</tr>
-						<tr>
-							<td >EUR</td>
-							<td >UAH</td>
-							<td >42.68</td>
-						</tr>
-						<tr>
-							<td>UAH</td>
-							<td>EUR</td>
-							<td>42.16</td>
-						</tr>						
-					</tbody>
-				</table>
-				
-			
-			</div>
-			</div>
-			
+
+						
 			<div class=" wrapper_content_homePage">
 				<div id="container_home_text">
 					<h1>
@@ -204,7 +140,18 @@
 				<div class="top"><img src="./image/top.png" alt=""/></div>
 				<div class = "phone_content" >
 					<div class = "image_goroscope">
-						<img src="./image/Horoscope.png" alt=""/>
+						<!-- Animation goroscop 2 -->
+						<!--<img src="./image/Horoscope.png" alt=""/>-->
+						<div class="photo_goroscop-stars">
+							<div class="phone_image_goroscop__star" style="background-image: url('./image/goroscopAnimat/stars1.png');"></div>
+							<div class="phone_image_goroscop__star" style="background-image: url('./image/goroscopAnimat/stars2.png');"></div>
+							<div class="phone_image_goroscop__star" style="background-image: url('./image/goroscopAnimat/stars3.png');"></div>
+							<div class="phone_image_goroscop__star" style="background-image: url('./image/goroscopAnimat/stars4.png');"></div>
+						</div>
+						<div class="phone_image_goroscop__back" style="background-image: url('./image/goroscopAnimat/Horoscope.png');"></div>
+						<div class="phone_image_goroscop__cloud pulse" style="background-image: url('./image/goroscopAnimat/cloud2.png');"></div>
+						<div class="phone_image_goroscop__cloud pulse" style="background-image: url('./image/goroscopAnimat/cloud1.png');"></div>
+
 					</div>
 					<div class = "title">
 						<p>Зодіакальний бандерогусь</p>
@@ -218,6 +165,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>												
 
 		<div class="page game" id="universe" style="display: none;">
@@ -261,8 +209,7 @@
 						</label>
 						<input type="text" accept="image/*" placeholder='Або введіть URL' id ="imageURL">
 			   		</div>
-				<input type = "button" value="Rainbow" id="rainbow">
-				
+
 				<div class="filter">
 						<select name="languaga" id="lang">
 							<option value="">Add filter</option>
@@ -276,11 +223,14 @@
 							<option value="violet">violet</option>
 						</select>
 				</div>	
+				<input type = "button" value="Rainbow" id="rainbow">
 				<input type = "button" value="All clear" id="clear" >	
 				</nav>
 			<div class="canvas_content">
-				<div class="album active"></div>
-				<biv class="book"></biv>
+				<div class="canvas_content wrapper_width">
+					<div class="album active"></div>
+					<biv class="book"></biv>
+				</div>
 				<div class="canvas_width">
 					
 					<canvas width="300" height="200" id="canvasPreview" ></canvas>
@@ -510,11 +460,9 @@
 				</section>
 			</div>
 		</div>
-		<!--<div id="smooth-wrapper">
-			<div id="smooth-content">-->
-				<div class="page curusel">
-					
-							<div class="anime_checkbox" >
+		
+		<div class="page curusel">
+					<div class="anime_checkbox" >
 					<div id="drag-container">
 						<div id="spin-container">
 						  <!-- Add your images (or video) here -->
@@ -541,11 +489,9 @@
 					<div class="layer layers__base" style="background-image: url('./image/goresont.webp');"></div>
 					<div class="layer layers__middle" style="background-image: url('./image/goresont_middle.webp');"></div>
 					<div class="layer layers__front" style="background-image: url('./image/goresont_front.webp');"></div>
-							</div>
-
-
+					</div>
 					<!-- Parallax Section 2 -->
-					<div class="split_cards" style="background-image: url('https://cdn.pixabay.com/photo/2024/01/01/23/41/trees-8482254_960_720.jpg');">
+					<div class="split_cards" style="background-image: url('./image/sunset.webp');">
 						<main id="main">
 							<h1>Card Split Hovers</h1>
 							<div class="split_cards cards">
@@ -660,10 +606,348 @@
 				</div>
 					</div>
 					</div>
-				</div>
-			</div>
-		</div>
 
+					<section>
+						<div class="recipe-container">
+						  <h1>The Dessert Recipes</h1>
+						  <div class="swiper">
+							<div class="swiper-wrapper">
+							  <div class="swiper-slide post">
+								<img
+								  class="post-img"
+								  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/defebc72-ea17-41c7-9bb6-70b3974a93b7"
+								  alt="recipe" />
+				  
+								<div class="post-body">
+								  <img
+									class="post-avatar"
+									src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/f9d29d0e-f03b-4990-9bc5-ade57a276b41"
+									alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Homemade Ice Cream</h2>
+									<p class="post-author">Evelyn Taylor</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post1"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post1"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+				  
+							  <div class="swiper-slide post">
+								<img class="post-img" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/7443d18f-26b6-47eb-bfca-541fb72cee65" alt="recipe" />
+				  
+								<div class="post-body">
+								  <img
+									class="post-avatar"
+									src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/3c7b6ef9-cd2d-4d70-819a-2aa9c2309083"
+									alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Pancake</h2>
+									<p class="post-author">Ethan Wilson</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post2"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post2"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+				  
+							  <div class="swiper-slide post">
+								<img class="post-img" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/24566dbf-61a2-4bd0-bb29-ef1773364eba" alt="recipe" />
+				  
+								<div class="post-body">
+								  <img
+									class="post-avatar"
+									src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/01332597-5aeb-483b-b682-9379c6ed8f14"
+									alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Macaron</h2>
+									<p class="post-author">Bella Smith</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post3"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post3"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+				  
+							  <div class="swiper-slide post">
+								<img
+								  class="post-img"
+								  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a208eb17-a847-4e04-be2c-d7ec2071ae45"
+								  alt="recipe" />
+				  
+								<div class="post-body">
+								  <img class="post-avatar" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b9f5ef94-c2c9-4792-b7a3-593d393f2c84" alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Cheesecake</h2>
+									<p class="post-author">Mia Dixon</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post4"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post4"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+				  
+							  <div class="swiper-slide post">
+								<img class="post-img" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/208fe8f5-9d7f-4b83-9249-43601bb4c500" alt="recipe" />
+				  
+								<div class="post-body">
+								  <img
+									class="post-avatar"
+									src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/58f9319c-78cf-444b-ba71-701c506c2dd3"
+									alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Donuts</h2>
+									<p class="post-author">Olivia Martinez</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post5"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post5"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+				  
+							  <div class="swiper-slide post">
+								<img
+								  class="post-img"
+								  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e4f91d6d-ee11-4ff7-9e6f-0fb3f9a78598"
+								  alt="recipe" />
+				  
+								<div class="post-body">
+								  <img
+									class="post-avatar"
+									src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/24ca2eec-a5ba-4c32-907c-ffffca203e1c"
+									alt="avatar" />
+								  <div class="post-detail">
+									<h2 class="post-name">Rolo Cheesecake</h2>
+									<p class="post-author">Benjamin Clark</p>
+								  </div>
+				  
+								  <div class="post-actions">
+									<a class="post-like" href="javascript:void(0)"
+									  ><i class="fas fa-heart"></i
+									></a>
+									<button
+									  class="post-actions-controller"
+									  data-target="post6"
+									  aria-controls="post-actions-content"
+									  aria-expanded="false">
+									  <i class="fa-solid fa-ellipsis fa-2xl"></i>
+									</button>
+									<div
+									  class="post-actions-content"
+									  id="post6"
+									  data-visible="false"
+									  aria-hidden="true">
+									  <ul role="list" class="grid-flow" data-spacing="small">
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-folder-open"></i>
+											<span>Add to Collection</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-eye"></i>
+											<span>Show the Recipe</span>
+										  </a>
+										</li>
+										<li>
+										  <a class="post-actions-link" href="javascript:void(0)">
+											<i class="fa-solid fa-user-plus"></i>
+											<span>Follow the User</span>
+										  </a>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<div class="swiper-scrollbar"></div>
+						  </div>
+						</div>
+					</section>
+		</div> 
+	  
 		<div class="page order" style="display: none;">
 			<div class="order_content">
 				

@@ -1,8 +1,7 @@
-:root{
-  --color1: #c3c1c1;
-  --lg1: #070707;
+.imageCanvas{
+  margin-left: 100px;
 }
-.title {
+.imageCanvas .title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,61 +9,49 @@
     color: var(--color1);
     margin-bottom: 20px;
 }
-.title p{
+.imageCanvas .title p{
     margin-top: 15px;
+    color: var(--color1);
 }
-input{
+.navBar input{
     cursor: pointer;
     padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
 }
-input, select, label{
+.navBar input,.navBar select,.navBar label{
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-#imageURL,#imageURL2{
+.navBar #imageURL{
   position: relative;
   border-radius:5px;
   cursor:auto;
   box-shadow:  9px 9px 18px rgba(238, 239, 237, 0.5),-9px -9px 18px #505562;
 }
-.album{
-  width: 30px;
-  height: 20px;
-  border-radius:5px;
-  background: var(--color1);
-  margin-right: 10px;
+.navBar input#finput{
+  display: none;
 }
-.book{
-  width: 20px;
-  height: 30px;
-  border-radius:5px;
-  background: var(--color1);
-  margin-right: 30px;
-}
-input#finput, input#finput2{
-    display: none;
-}
-.wrapAddImage{
+
+.navBar .wrapAddImage{
   display: flex;
   transition: 0.5s;
 }
-.filter{
+.navBar .filter{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center
 }
 
-.filter input label{
+.navBar .filter input label{
     cursor: pointer;
     display: flex;
 }
 
-.addImg{
+.navBar .addImg{
   cursor: pointer;
   border-radius: 5px;
   width: 150px;
@@ -80,12 +67,12 @@ input#finput, input#finput2{
   color: #0ad406;
  
 }
-.addImg:hover{
+.navBar .addImg:hover{
   background-color: rgba(147, 209, 117, 0.50);
   transition:0.5s;
 }
 
-#rainbow{
+.navBar #rainbow{
     border-radius: 5px;
     width: 150px;
     text-align: left;
@@ -97,16 +84,16 @@ input#finput, input#finput2{
     box-shadow:  9px 9px 18px #5773c7,-9px -9px 18px #6b707b;
     color: rgb(82, 125, 243);
 }
-#rainbow:focus, .filter select:focus{
+.navBar #rainbow:focus, .navBar .filter select:focus{
   outline:transparent;   
 }
  
-#rainbow:hover{
+.navBar #rainbow:hover{
   background-color: rgba(82, 125, 243, 0.50);
   transition:0.5s;
 }
 
-#clear,#clear2{
+.navBar #clear,#clear2{
   border-radius: 5px;
   width: 150px;
   text-align: left;
@@ -120,20 +107,20 @@ input#finput, input#finput2{
   color: rgb(255, 10, 1);
 }
 
-#clear:hover,
-#clear2:hover
+.navBar #clear:hover,
+.navBar #clear2:hover
 {
   background-color: rgba(255, 10, 1, 0.33);
   transition:0.5s;
 }
 
-.filter label select{
+.navBar .filter label select{
     cursor: pointer !important;
     padding: 10px;
     margin-left: 10px;
     margin-left: 10px;
 }
-.filter select{
+.navBar .filter select{
   border-radius: 5px;
   width: 150px;
   text-align: left;
@@ -147,11 +134,11 @@ input#finput, input#finput2{
   box-shadow:  9px 9px 18px rgb(247, 149, 72), -9px -9px 18px #505562;
   color: rgb(247, 149, 72);
 }
-.filter select option{
+.navBar .filter select option{
     background:#fff;
 }
 
-.filter select:hover{
+.navBar .filter select:hover{
   background-color: rgba(247, 149, 73, 0.50);
   transition:0.5s;
 }
@@ -161,19 +148,34 @@ input#finput, input#finput2{
     display: flex;
     align-items:center;
     justify-content: center;
+
 }
 .canvas_width{
   position: relative;
 }
-  canvas{
+.canvas_content .album{
+  width: 30px;
+  height: 20px;
+  border-radius:5px;
+  background: var(--color1);
+  margin-right: 10px;
+}
+.canvas_content .book{
+  width: 20px;
+  height: 30px;
+  border-radius:5px;
+  background: var(--color1);
+  margin-right: 30px;
+}
+ .imageCanvas canvas{
     margin: 20px 20px;
     border-radius:5px;
     background: var(--color1);
     box-shadow: 9px 9px 10px #505562;
   }
-  #getCanvas{
+  .imageCanvas #getCanvas{
     cursor: url("../image/free_icon_pencil_4277132.png"), pointer;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--white);
   }
   .icon_getCanvas{
     position: absolute;
@@ -196,7 +198,7 @@ input#finput, input#finput2{
     width: 40px;
     height: 40px;
     border-radius:50%;
-    border: 1px solid #ffffff;
+    border: 1px solid var(--white);
     transition: all 0.5s ease-in-out;
   }
   .canvas_content .arrow:hover{
@@ -214,8 +216,8 @@ input#finput, input#finput2{
 
   }
   .photoStock:hover{
-    color:#f0f6bd;
-    text-shadow:0 0 5px #f0f6bd;
+    color:var(--yellow-100);
+    text-shadow:0 0 5px var(--yellow-100);;
   }
   .color_wrap{
     position: relative;
@@ -249,7 +251,7 @@ input[type="range"]{
 
 .color__preview{
   background:none;
-  background-color: var(--lg1);
+  background-color: var(--grey-900);
 }
 
 .opacity_wrap{
@@ -267,5 +269,77 @@ input[type="range"]{
  font-weight: 600;
 
 }
+
+/*діє для екранів менше 1200px*/
+@media (max-width: 1200px) {
+  .page.imageCanvas{
+    justify-content: start;
+    align-items: start;
+  }
+  .canvas_content{
+    flex-direction: column;
+
+  }
+  .wrapper_width{
+    flex-direction: row;
+  }
+  .wrapAddImage{
+    flex-direction: column;
+    align-items:center;
+    margin-bottom: 20px;
+  }
+  .wrapAddImage #imageURL{
+    margin-top: 15px;
+    margin-left: 0;
+  }
+  .navBar{
+    z-index: 1;
+    position: fixed;
+    top:15%;
+    right: 5%;
+    display: flex;
+    flex-direction:column !important;
+  }
+  .navBar  .folter select{
+    margin-top: 20px;
+  }
+  .navBar input{
+    margin-top: 20px;
+  }
+  .imageCanvas{
+    justify-content: start;
+    align-items: start;
+  }
+  }
+ /*діє для екранів менше 900px*/
+ @media (max-width: 900px) {
+  .navBar{
+    top:10%;
+    right: 0;
+  }
+  .navBar input{
+    padding: 10px 5px;
+  }
+  .navBar  .folter select{
+    padding: 0px 0px;
+  }
+  .navBar .addImg{
+    margin: 0;
+    padding: 5px;
+  }
+ }
+ /*діє якщо екран стає більший 768px*/
+ @media (max-width: 768px) {
+  
+  }  /*діє для екранів менше 720px*/
+ @media (max-width: 720px) {
+
+
+
+
+}
+
+
+
 
 

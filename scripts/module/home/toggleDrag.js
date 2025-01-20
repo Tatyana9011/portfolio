@@ -1,5 +1,6 @@
 import removeEventListener from '../removerEventListener.js';
 import { getDataStorage } from '../localStorage.js';
+import changeActiveSidebar from '../../changeActiveSidebar.js';
 const toggleDrag =()=>{
     console.log('toggleDrag: ');
     const draggable = document.getElementById('draggable'),
@@ -44,12 +45,7 @@ const toggleDrag =()=>{
     }
 
     const draggableClick=(e)=>{
-
-      if (!dragMoved) {
-        menuToggle.classList.toggle("active");
-        sidebar.classList.toggle("active");
-      }
-    
+     changeActiveSidebar(true);
     }
 
 

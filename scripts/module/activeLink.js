@@ -14,7 +14,7 @@ const activeLink = (str)=>{
         if(textLink&&textLink === str){
             item.classList.add('active');
         
-        } else if(item.closest('logo')){
+        } else if(item.closest('sidebar__logo')){
             item[1].classList.add('active')
         
         }

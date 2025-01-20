@@ -24,32 +24,6 @@
     }
   }
 
-:root {
-  --background-color: #bbdefb;
-  --blue-50: #e3f2fd;
-  --blue-100: #bbdefb;
-  --blue-A700: #2962ff;
-  --green-50: #e8f5e9;
-  --green-100: #c8e6c9;
-  --green-A700: #00c853;
-  --purple-50: #f3e5f5;
-  --purple-100: #e1bee7;
-  --purple-A700: #aa00ff;
-  --orange-50: #fff3e0;
-  --orange-100: #ffe0b2;
-  --orange-A700: #ff6d00;
-  --orange-700: #f57c00;
-  --grey-900: #212121;
-  --white: #ffffff;
-  --round-button-active-color: #212121;
-  --translate-main-slider: 100%;
-  --main-slider-color: #e3f2fd;
-  --translate-filters-slider: 0;
-  --filters-container-height: 3.8rem;
-  --filters-wrapper-opacity: 1;
-}
-
-
 .settings_content {
   width: 1200px;
   display: flex;
@@ -148,7 +122,7 @@ ul.main-tabs li {
   width: 4.8rem;
   border-radius: 50%;
   transition: background-color 0.4s ease-in-out;
-  background-color: var(--main-slider-color);
+  background-color: var(--background);
 }
 
 .animate-jello {

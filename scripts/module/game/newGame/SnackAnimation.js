@@ -1,12 +1,15 @@
 import stopSnackGame from "./stopSnackGame.js";
 import removerEventListener from "../../removerEventListener.js";
 
-const snackAnimation = (bool) => {
-    console.log('animation: ');
+const snackAnimation = () => {
+  const startGameBtn = document.querySelector('.startGame_btn');
+    
+  startGameBtn.removeEventListener('click', snackAnimation)
+  startGameBtn.style.cssText='opacity:0.5; cursor:default;';
+
     let direction = 'right';
     let gameInterval;
     const modalOverlay = document.querySelector('.modal-overlay');
-
 
     function handleInput(event) {
 
@@ -31,8 +34,7 @@ const snackAnimation = (bool) => {
      
     }
 
-    if (bool) {
-     
+    
       const canvas = document.getElementById('canvasGame');
       let ctx = canvas.getContext('2d');
       const box = 20;
@@ -99,13 +101,6 @@ const snackAnimation = (bool) => {
   if (gameInterval) clearInterval(gameInterval); // Stop previous game loop
 
   gameInterval = setInterval(drawGame, 500); // Start new game loop
-
-}else{
-
-  stopSnackGame(gameInterval);
-  
-}
-
 
 
 };
