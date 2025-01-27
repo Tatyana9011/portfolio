@@ -29,10 +29,11 @@ const createElement = (selector, contaner, count, height) =>{
         }
 
         if(selector==='tree'){
-            
+            let imgSrcTree = require(`../../../assets/images/tree${getRandomEneme(MAX_TREE)}.png`);
+
             elem.style.background = `
             transparent
-            url("../../../assets/images/tree${getRandomEneme(MAX_TREE)}.png") 
+            url("${imgSrcTree}")
             center / cover
             no-repeat
             `;
